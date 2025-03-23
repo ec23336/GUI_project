@@ -1,9 +1,22 @@
+/* App.css */
 @import "tailwindcss";
 
+/* Ensure this applies globally */
+body {
+  background-image: url('./images/base.png');  /* Correct path to your image */
+  background-size: cover;         /* Ensures the image stretches across the screen */
+  background-position: center;    /* Centers the background image */
+  background-repeat: no-repeat;   /* Prevents background image from repeating */
+  min-height: 100vh;              /* Ensures body spans at least the full height of the viewport */
+  width: 100%;                     /* Ensures body spans the full width of the screen */
+  overflow-x: hidden;             /* Prevent horizontal scrolling */
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
 
@@ -19,7 +32,6 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
-
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);

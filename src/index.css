@@ -1,19 +1,25 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+* {
+  font-family: 'ADLaM Display', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Optionally fallback to 'Fredoka' font */
+body {
+  font-family: 'ADLaM Display', 'Fredoka', sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
 }
 
+/* Default styles for links */
 a {
   font-weight: 500;
   color: #646cff;
@@ -31,11 +37,7 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
+/* Button styles */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -47,14 +49,17 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Light theme adjustments */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
