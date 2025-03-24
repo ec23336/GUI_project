@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 import React from 'react';
 import './App.css';
 import AppRouter from './AppRouter';
 import backgroundImage from './images/base.png'; // Import the image
-=======
-import './App.css'
 import GrabAPI from './components/API';
 import { useState } from 'react';
 import MarineDataAPI from './components/MarineDataAPI';
@@ -13,11 +10,9 @@ function App() {
   const [view, setView] = useState('home'); // 'home', 'ocean', 'location', 'marine'
   const [location, setLocation] = useState(''); // Store the entered location
   const [marineLocation, setMarineLocation] = useState(''); // For marine weather
->>>>>>> 2af9d1989e0adbfb6f8375f1fe67d2755d7ce564
 
 const App = () => {
   return (
-<<<<<<< HEAD
     <div
       className="App"
       style={{
@@ -31,7 +26,6 @@ const App = () => {
       }}
     >
       <AppRouter />
-=======
     <div>
       {view === 'home' && (
         <div>
