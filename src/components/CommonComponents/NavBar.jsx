@@ -9,45 +9,44 @@ const Navbar = () => {
             <nav className={styles.navbar}>
                 {/* Left side logo */}
                 <NavLink to="/" className={styles.logo}>
-                Nautical Weather
+                    Nautical Weather
                 </NavLink>
         
                 {/* Right side links and alert icon */}
-                <div className={styles['nav-links']}>
-                <ul>
-                    <li>
-                    <NavLink 
-                        to="/ocean" 
-                        className={styles.navlink}
-                        activeClassName={styles['active-link']}
-                    >
-                        Ocean
-                    </NavLink>
-                    </li>
-                    <li>
-                    <NavLink 
-                        to="/map" 
-                        className={styles.navlink}
-                        activeClassName={styles['active-link']}
-                    >
-                        Map
-                    </NavLink>
-                    </li>
-                    <li>
-                    <NavLink 
-                        to="/about" 
-                        className={styles.navlink}
-                        activeClassName={styles['active-link']}
-                    >
-                        <img src={AlertImg} alt="alerts" />
-                    </NavLink>
-                    </li>
-                </ul>
+                <div className={styles["nav-links"]}>
+                    <ul>
+                        <li>
+                            {/* If using React Router v6, replace activeClassName as shown below */}
+                            <NavLink 
+                                to="/location" 
+                                className={({ isActive }) => isActive ? styles["active-link"] : styles.navlink}
+                                // activeClassName={styles["active-link"]}  // Use this if using React Router v5 or earlier
+                            >
+                                Ocean
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink 
+                                to="/map" 
+                                className={({ isActive }) => isActive ? styles["active-link"] : styles.navlink}
+                            >
+                                Map
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink 
+                                to="/about" 
+                                className={({ isActive }) => isActive ? styles["active-link"] : styles.navlink}
+                            >
+                                <img src={AlertImg} alt="alerts" />
+                            </NavLink>
+                        </li>
+                    </ul>
                 </div>
             </nav>
-            <div className={styles['navbar-divider']}></div>
+            <div className={styles["navbar-divider"]}></div>
         </div>
     );
-  };
+};
 
 export default Navbar;

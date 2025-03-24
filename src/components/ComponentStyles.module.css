@@ -8,6 +8,14 @@
 }
 
 /* Left side title styling */
+.navbar .logo:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+
+
+/* Left side title styling */
 .navbar .logo {
     color: #C3E3FC;
     font-size: 2.5rem;
@@ -43,11 +51,17 @@
     transform: scale(1.1);
 }
 
-/* Active link style */
 .navbar .active-link {
-    color: #0C7AE0;
-    transform: scale(1.1);
+    color: #ffffff;              /* White text for contrast */
+    background-color: #0C7AE0;   /* Blue background */
+    border-radius: 5px;          /* Rounded corners */
+    padding: 0.3rem 0.8rem;       /* Add some padding */
+    font-weight: bold;           /* Bold text for emphasis */
+    font-size: 1.3rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+
 
 /* Styling for the alert image */
 .navbar img {
@@ -55,6 +69,7 @@
     height: 4.5rem;
     vertical-align: middle;
     margin-left: 20px; /* Add space between image and links */
+    transition: 0.3s;
 }
 
 /* Hover effect for the image */
