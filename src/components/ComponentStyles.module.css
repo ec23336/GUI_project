@@ -1,0 +1,327 @@
+/* Navbar */
+.navbar {
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between; /* This will position elements on the left and right */
+    align-items: center;           /* This will vertically center the elements */
+    height: 6rem;
+}
+
+/* Left side title styling */
+.navbar .logo:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+
+
+/* Left side title styling */
+.navbar .logo {
+    color: #C3E3FC;
+    font-size: 2.5rem;
+    text-decoration: none;
+}
+
+/* Right side links container */
+.navbar .nav-links {
+    display: flex;
+    gap: 40px; /* Increased the space between the links (adjusted for more space) */
+    align-items: center; /* Ensures items are vertically aligned */
+}
+
+/* List item style */
+.navbar li {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 3rem;
+}
+
+/* Style for the navbar links */
+.navbar .navlink {
+    color: #C3E3FC;
+    font-size: 1.8rem;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+/* Hover state for the links */
+.navbar .navlink:hover {
+    color: #0C7AE0;
+    transform: scale(1.1);
+}
+
+.navbar .active-link {
+    color: #ffffff;              /* White text for contrast */
+    background-color: #0C7AE0;   /* Blue background */
+    border-radius: 5px;          /* Rounded corners */
+    padding: 0.3rem 0.8rem;       /* Add some padding */
+    font-weight: bold;           /* Bold text for emphasis */
+    font-size: 1.3rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+
+/* Styling for the alert image */
+.navbar img {
+    width: 4.5rem;
+    height: 4.5rem;
+    vertical-align: middle;
+    margin-left: 20px; /* Add space between image and links */
+    transition: 0.3s;
+}
+
+/* Hover effect for the image */
+.navbar img:hover {
+    transform: scale(1.15); /* Increase size of the image */
+}
+
+/* Divider (blue horizontal line under the navbar) */
+.navbar-divider {
+    width: 95%;
+    height: 0.2rem; /* Set the height of the line */
+    background-color: #0C7AE0; /* Blue color */
+    margin: 0 auto; /* Center the line */
+   
+}
+
+/* WeatherCard */
+.weather-card {
+    display: flex;
+    align-items: center;
+    background-color: #C3E3FC;
+    border-radius: 10rem;
+    padding: 4rem; 
+    width: 33.375rem; 
+    height: 12rem; 
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2); /* Soft shadow */
+    justify-content: space-between;
+    margin: 1rem auto; 
+}
+
+.weather-left img {
+    width: 8rem; 
+    height: 8rem; 
+}
+
+.divider {
+    height: 9rem; 
+    width: 0.3rem;  
+    background-color: black;
+    margin: 0 1.25rem; 
+}
+
+.weather-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.weather-right span {
+    font-size: 3.4rem; 
+    font-weight: bold;
+    color: black;
+}
+
+/* DateCard */
+
+.date-card {
+    background-color: #62C3F7; /* Background color */
+    color: white; /* White text */
+    font-family: 'Fredoka', sans-serif; /* ADLaM font */
+    font-weight: bold;
+    padding: 0.625rem 1.25rem; /* Padding (adjusted to rem) */
+    border-radius: 2rem; /* Rounded corners */
+    text-align: center; /* Center the text */
+    font-size: 1.25rem; /* Font size */
+    width: 19rem; /* Content-based width */
+    height: 3.2rem;
+    min-width: 11.25rem; /* Minimum width */
+    margin: 0.5rem auto; /* Centered horizontally */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2); /* Soft shadow */
+    border: 0.15rem solid black; /* Thin black border */
+}
+
+/* TypeLocationBar */
+.typeLocationBar {
+    display: flex;
+    align-items: center;
+    background-color: #C3E3FC;
+    border-radius: 2rem;
+    padding: 0.5rem 1rem;
+    width: 20rem;
+    height: 3rem; /* Fixed height */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    gap: 0.5rem; /* Add some space between elements */
+    margin: 0.5rem auto; /* Center the bar */
+}
+
+/* Search Button (Image) */
+.searchButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    outline: none; /* Remove default focus outline */
+    transition: transform 0.2s ease-in-out; /* Smooth transition for scale effect */
+}
+
+.searchButton:active {
+    transform: scale(1.15); /* Slightly shrink the button when clicked (visual feedback) */
+}
+
+.searchButton img {
+    width: 2rem;
+    height: 2rem;
+    transition: transform 0.2s ease-in-out;
+}
+
+.searchButton:hover img {
+    transform: scale(1.1); /* Slight increase on hover */
+}
+
+/* Input Field */
+.inputField {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0C7AE0;
+    flex-grow: 1;
+    min-width: 0; /* Ensures input doesn't push out other elements */
+    margin-left: 0.5rem;
+}
+
+/* Placeholder color */
+.inputField::placeholder {
+    color: #6c757d;
+}
+
+/* No outline or shadow when the button is focused or clicked */
+.searchButton:focus,
+.searchButton:focus-visible {
+    outline: none;
+}
+
+/* Optional: For keyboard accessibility */
+.searchButton:focus-visible {
+    outline: none;
+}
+
+/* LocationDisplay */
+.locationDisplay {
+    justify-content: center;
+    margin: 0.5rem auto; /* Center horizontally */
+    display: flex;
+    align-items: center;
+    background-color: #C3E3FC; /* Light blue */
+    border-radius: 2rem;
+    padding: 0.5rem 1rem;
+    width: 18rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    border: 0.15rem solid black;
+}
+
+.locationText {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+
+
+/* Degrees Card */
+.degrees-card {
+    display: flex; /* Ensure the use of Flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin: auto;
+    background-color: #C3E3FC;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #62C3F7;
+    width: 6rem;
+    height: 4rem;
+    border-radius: 4rem;
+    margin-top: 0.5rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.hour-card {
+    display: flex; /* Ensure the use of Flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin: auto;
+    background-color: #0C7AE0;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: white;
+    width: 6rem;
+    height: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.icon-card {
+    display: flex; /* Ensure the use of Flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin: auto;
+    background-color: #C3E3FC;
+    font-size: 1.8rem;
+    font-weight: bold;
+    width: 6rem;
+    height: 5rem;
+    border-radius: 2rem;
+    margin-bottom: 0.5rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.icon-card img {
+    width: 3.7rem;
+    height: 3.7rem;
+
+}
+
+.forecast-card {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+    gap: 0.3rem; /* Reduce space between elements */
+    background-color: #62C3F7;
+    width: 6rem;
+    height: auto; /* Adjust height dynamically based on content */
+    border-radius: 1rem;
+    margin: 0; /* Remove unnecessary margins */
+}
+
+.forecast-list {
+    display: flex; /* Use flexbox to align items horizontally */
+    flex-direction: row; /* Ensure items are in a row */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Align vertically */
+    gap: 2rem; /* Reduce spacing between cards */
+    background-color: #62C3F7;
+    width: 65%;
+    margin: auto;
+    margin-bottom: 1rem;
+    border-radius: 2rem;
+    padding: 1rem; /* Slight padding */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Adjust individual card elements */
+.degrees-card,
+.hour-card,
+.icon-card {
+    margin: 0; /* Remove unnecessary margin */
+    padding: 0.2rem; /* Slight padding for compact spacing */
+}
