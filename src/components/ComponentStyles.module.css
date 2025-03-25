@@ -258,7 +258,7 @@
     display: flex; /* Ensure the use of Flexbox */
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
-    margin: auto;
+    margin: 0 auto; /* Remove margin top/bottom, auto for left/right */
     background-color: #0C7AE0;
     font-size: 1.3rem;
     font-weight: bold;
@@ -267,6 +267,23 @@
     height: 2rem;
     border-radius: 1rem;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.day-card {
+    /* Identical styling to hour-card */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* Remove margin top/bottom, auto for left/right */
+    background-color: #0C7AE0;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: white;
+    width: 6rem;
+    height: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 0.3rem; /* Small gap between day and hour */
 }
 
 .icon-card {
@@ -297,10 +314,17 @@
     align-items: center; /* Center items horizontally */
     gap: 0.3rem; /* Reduce space between elements */
     background-color: #62C3F7;
-    width: 6rem;
+    width: calc(12% - 1rem); /* Percentage-based width with some spacing accounted for */
+    min-width: 5rem; /* Minimum width to ensure readability */
+    max-width: 8rem; /* Maximum width to maintain proportions */
     height: auto; /* Adjust height dynamically based on content */
     border-radius: 1rem;
     margin: 0; /* Remove unnecessary margins */
+    transition: transform 0.2s; /* Smooth transition for hover effect */
+}
+
+.forecast-card:hover {
+    transform: scale(1.05); /* Slight zoom on hover for better interaction */
 }
 
 .forecast-list {
@@ -308,19 +332,42 @@
     flex-direction: row; /* Ensure items are in a row */
     justify-content: center; /* Center horizontally */
     align-items: center; /* Align vertically */
-    gap: 2rem; /* Reduce spacing between cards */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    gap: clamp(1rem, 2vw, 2rem); /* Responsive gap that scales with viewport */
     background-color: #62C3F7;
-    width: 65%;
-    margin: auto;
+    width: 90%; /* Start wider on smaller screens */
+    max-width: 1200px; /* Maximum width for very large screens */
+    min-width: 320px; /* Minimum width for very small screens */
+    margin: 1rem auto;
     margin-bottom: 1rem;
     border-radius: 2rem;
-    padding: 1rem; /* Slight padding */
+    padding: clamp(0.5rem, 1vw, 1.5rem); /* Responsive padding */
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Media queries for different screen sizes */
+@media (min-width: 768px) {
+    .forecast-list {
+        width: 80%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .forecast-list {
+        width: 75%;
+    }
+}
+
+@media (min-width: 1440px) {
+    .forecast-list {
+        width: 65%;
+    }
 }
 
 /* Adjust individual card elements */
 .degrees-card,
 .hour-card,
+.day-card,
 .icon-card {
     margin: 0; /* Remove unnecessary margin */
     padding: 0.2rem; /* Slight padding for compact spacing */
