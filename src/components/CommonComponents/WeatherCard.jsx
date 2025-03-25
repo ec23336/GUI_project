@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from '../ComponentStyles.module.css'; // Importing the styles
+import styles from '../ComponentStyles.module.css';
+import { useWeather } from '../../context/WeatherContext';
 
 // Weather icon imports
 import cloudy from '../../images/WeatherIcons/cloudy.png';
@@ -19,17 +20,42 @@ const weatherIcons = {
   partlyCloudy
 };
 
-function WeatherCard({ temperature, weatherIcon }) {
-  // Dynamically set the weather icon based on the weatherIcon prop
-  const icon = weatherIcons[weatherIcon];
+function WeatherCard({ customTemperature, customWeatherIcon }) {
+  const { weatherData } = useWeather();
+  
+  // Show loading state if weather data is being fetched
+  if (weatherData.loading) {
+    return <div className={styles['weather-card']}>Loading weather data...</div>;
+  }
+
+  // Show error message if there is one
+  if (weatherData.error) {
+    return (
+      <div className={styles['weather-card']}>
+        <div className={styles['error-message']}>
+          {weatherData.error}
+        </div>
+      </div>
+    );
+  }
+  
+  // Use custom props if provided, otherwise use data from context
+  const temperature = customTemperature || 
+    (weatherData.currentWeather ? weatherData.currentWeather.temperatureC : "25");
+  
+  const weatherType = customWeatherIcon || 
+    (weatherData.currentWeather ? weatherData.currentWeather.weatherType : "sunny");
+  
+  // Get the appropriate icon
+  const icon = weatherIcons[weatherType] || weatherIcons.sunny;
 
   return (
     <div className={styles['weather-card']}>
       <div className={styles['weather-left']}>
-        <img src={icon} alt="weather-icon" /> {/* Display the image */}
+        <img src={icon} alt="weather-icon" />
       </div>
       
-      <div className={styles.divider}></div> {/* Corrected the divider class */}
+      <div className={styles.divider}></div>
 
       <div className={styles['weather-right']}>
         <span>{temperature}°C</span>

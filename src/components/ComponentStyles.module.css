@@ -372,3 +372,11 @@
     margin: 0; /* Remove unnecessary margin */
     padding: 0.2rem; /* Slight padding for compact spacing */
 }
+
+.error-message {
+  color: #ff4d4d;
+  font-size: 0.9rem;
+  text-align: center;
+  width: 100%;
+  padding: 5px;
+}

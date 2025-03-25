@@ -5,7 +5,7 @@ import styles from '../ComponentStyles.module.css';
 function DateCard() {
   return (
     <div className={styles['date-card']}>
-      <CurrentDate /> 
+      <CurrentDate />
     </div>
   );
 }
