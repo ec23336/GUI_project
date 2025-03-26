@@ -313,18 +313,17 @@
 
 .forecast-card {
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    justify-content: center; /* Center items vertically */
-    align-items: center; /* Center items horizontally */
-    gap: 0.3rem; /* Reduce space between elements */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
     background-color: #62C3F7;
-    width: calc(12% - 1rem); /* Percentage-based width with some spacing accounted for */
-    min-width: 5rem; /* Minimum width to ensure readability */
-    max-width: 8rem; /* Maximum width to maintain proportions */
-    height: auto; /* Adjust height dynamically based on content */
+    width: 6.5rem; /* Restore the original width */
+    height: auto;
     border-radius: 1rem;
-    margin: 0; /* Remove unnecessary margins */
-    transition: transform 0.2s; /* Smooth transition for hover effect */
+    margin: 0; /* Remove margin from cards */
+    padding: 0.5rem 0;
+    transition: transform 0.2s;
 }
 
 .forecast-card:hover {
@@ -332,39 +331,31 @@
 }
 
 .forecast-list {
-    display: flex; /* Use flexbox to align items horizontally */
-    flex-direction: row; /* Ensure items are in a row */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Align vertically */
-    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
-    gap: clamp(1rem, 2vw, 2rem); /* Responsive gap that scales with viewport */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; /* Revert to space-around distribution */
+    align-items: center;
+    flex-wrap: nowrap; /* Keep items in a single row on larger screens */
+    gap: 0; /* Remove gap between items */
     background-color: #62C3F7;
-    width: 90%; /* Start wider on smaller screens */
-    max-width: 1200px; /* Maximum width for very large screens */
-    min-width: 320px; /* Minimum width for very small screens */
+    width: 90%;
+    max-width: 1200px; /* Restore original max-width */
     margin: 1rem auto;
     margin-bottom: 1rem;
     border-radius: 2rem;
-    padding: clamp(0.5rem, 1vw, 1.5rem); /* Responsive padding */
+    padding: 1rem 0.5rem; /* Reduced horizontal padding */
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Media queries for different screen sizes */
-@media (min-width: 768px) {
+/* Add minimal responsive fixes for smaller screens */
+@media (max-width: 768px) {
     .forecast-list {
-        width: 80%;
+        width: 95%;
+        overflow-x: auto; /* Allow horizontal scrolling on small screens */
     }
-}
-
-@media (min-width: 1024px) {
-    .forecast-list {
-        width: 75%;
-    }
-}
-
-@media (min-width: 1440px) {
-    .forecast-list {
-        width: 65%;
+    
+    .forecast-card {
+        min-width: 6rem; /* Prevent cards from shrinking too much */
     }
 }
 
