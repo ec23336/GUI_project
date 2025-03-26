@@ -260,13 +260,17 @@
     align-items: center; /* Center vertically */
     margin: 0 auto; /* Remove margin top/bottom, auto for left/right */
     background-color: #0C7AE0;
-    font-size: 1.3rem;
+    font-size: 1.1rem; /* Slightly smaller font to fit AM/PM format */
     font-weight: bold;
     color: white;
-    width: 6rem;
+    width: 6.5rem; /* Slightly wider to fit the AM/PM text */
     height: 2rem;
     border-radius: 1rem;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 0 0.2rem; /* Add a bit of horizontal padding */
+    overflow: hidden; /* Prevent text overflow */
+    white-space: nowrap; /* Keep text on single line */
+    text-overflow: ellipsis; /* Show ellipsis for text that doesn't fit */
 }
 
 .day-card {
