@@ -1,28 +1,36 @@
 import React, { useState } from "react";
-import styles from "../ComponentStyles.module.css"; // Import CSS
-import MagnifyingGlass from "../../images/magnifyingGlass.png"; // Import search icon
+import styles from "../ComponentStyles.module.css";
+import MagnifyingGlass from "../../images/magnifyingGlass.png";
+import { useWeather } from "../../context/WeatherContext";
 
-function TypeLocationBar({ onSearch }) {
-    const [location, setLocation] = useState(""); // Location input state
+function TypeLocationBar() {
+    const [location, setLocation] = useState("");
+    const { setWeatherData } = useWeather();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (onSearch) onSearch(location); // Call the function passed from the parent component to update the location
-        setLocation(""); // Clear the input field after submission
+        if (location.trim()) {
+            setWeatherData(prevData => ({ 
+                ...prevData, 
+                searchLocation: location, 
+                manualLocationSet: true,
+                loading: true,
+                error: null
+            }));
+            setLocation("");
+        }
     };
 
     return (
         <form className={styles.typeLocationBar} onSubmit={handleSubmit}>
-            {/* Magnifying glass icon (acts as submit button) */}
             <button type="submit" className={styles.searchButton}>
                 <img src={MagnifyingGlass} alt="Search" />
             </button>
 
-            {/* Input field */}
             <input
                 type="text"
                 value={location}
-                onChange={(e) => setLocation(e.target.value)} // Update location state on user input
+                onChange={(e) => setLocation(e.target.value)}
                 placeholder="Type location..."
                 className={styles.inputField}
             />

@@ -5,12 +5,14 @@ import styles from '../ComponentStyles.module.css'; // Importing the styles
 import DegreesCard from './DegreesCard';
 import HourCard from './HourCard';  
 import IconCard from './IconCard'; 
+import DayCard from './DayCard';
 
-function ForecastCard({degrees, hour, weatherType}) {
+function ForecastCard({degrees, hour, weatherType, day}) {
 
   return (
     <div className={styles['forecast-card']}>
         <DegreesCard temperature={degrees} />
+        <DayCard day={day} />
         <HourCard hour={hour} />
         <IconCard weatherType={weatherType} />
     </div>

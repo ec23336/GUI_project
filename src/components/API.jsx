@@ -1,21 +1,33 @@
 import { useEffect } from "react";
+import { useWeather } from "../context/WeatherContext";
 
-function GrabAPI({location}) {
+function GrabAPI() {
+    const { weatherData, setWeatherData } = useWeather();
+    
     useEffect(() => {
+        if (!weatherData.searchLocation) {
+            return; // Skip if no search location is set
+        }
+        
+        console.log("GrabAPI useEffect triggered with location:", weatherData.searchLocation);
+        
         async function fetchWeatherInfo() {
             try {
-                if (!location) return;
+                console.log("Fetching weather for:", weatherData.searchLocation);
+                setWeatherData(prevData => ({ ...prevData, loading: true, error: null }));
 
-                const geoResponse = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=7c852a0f1c711a9f5ba037cc439838a8`);
+                const geoResponse = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${weatherData.searchLocation}&limit=5&appid=7c852a0f1c711a9f5ba037cc439838a8`);
             
                 const geoInfo = await geoResponse.json();
+                
+                if (!geoInfo.length) {
+                    // No location found
+                    throw new Error("Location not found. Please check spelling and try again.");
+                }
+                
                 const { name, lat, lon } = geoInfo[0];
-                console.log("Name: ", name);
-                console.log("Latitude: ", lat); 
-                console.log("Longitude: ", lon);
 
-                const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=7c852a0f1c711a9f5ba037cc439838a8`)
-        
+                const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=7c852a0f1c711a9f5ba037cc439838a8`);
                 const weatherInfo = await weatherResponse.json();
                 
                 const { temp } = weatherInfo.main; 
@@ -23,13 +35,11 @@ function GrabAPI({location}) {
                 const weatherCondition = weatherInfo.weather[0].description; 
                 const icon = weatherInfo.weather[0].icon;
 
-                console.log("Temperature: ", temperatureC);
-                console.log("Weather Condition: ", weatherCondition);
-                console.log("Icon: ", icon);
+                // Get weather icon type
+                const weatherType = getWeatherType(icon, weatherCondition);
 
-                const forecastResponse = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=7c852a0f1c711a9f5ba037cc439838a8`)
+                const forecastResponse = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=7c852a0f1c711a9f5ba037cc439838a8`);
                 const forecastInfo = await forecastResponse.json();
-
 
                 const validTimes = ["06:00:00","12:00:00", "18:00:00"];
                 const dailyForecasts = forecastInfo.list.filter(entry => validTimes.includes(entry.dt_txt.split(" ")[1]));
@@ -42,9 +52,9 @@ function GrabAPI({location}) {
                     4 : "Thursday",
                     5 : "Friday",
                     6 : "Saturday"
-                }
+                };
 
-                dailyForecasts.forEach((forecast) => {
+                const formattedForecasts = dailyForecasts.map((forecast) => {
                     const date = forecast.dt_txt.split(" ")[0];
                     const time = forecast.dt_txt.split(" ")[1];
                     const day = new Date(date).getDay();
@@ -53,22 +63,84 @@ function GrabAPI({location}) {
                     const temperatureC = (temp - 273.15).toFixed(1);
                     const weatherCondition = forecast.weather[0].description;
                     const icon = forecast.weather[0].icon;
+                    const weatherType = getWeatherType(icon, weatherCondition);
 
-                    console.log("Day Of The Week: ", dayName);
-                    console.log("Time ", time);
-                    console.log("Temperature: ", temperatureC);
-                    console.log("Weather Condition: ", weatherCondition);
-                    console.log("Icon: ", icon);
+                    return {
+                        date,
+                        time,
+                        dayName,
+                        temperatureC,
+                        weatherCondition,
+                        weatherType
+                    };
+                });
+
+
+                const tomorrowKey = "5AzjYZBIYN50gnL4qrOhiQzcujYX8Ogz";
+                const extraRes = await fetch(`https://api.tomorrow.io/v4/weather/realtime?location=${lat},${lon}&apikey=${tomorrowKey}`);
+                const extraData = await extraRes.json();
+                const extra = extraData.data?.values || {};
+
+                let alerts = [
+                { event: "Feels Like", description: `Feels like ${extra.temperatureApparent}°C` },
+                { event: "UV Index", description: `UV Index is ${extra.uvIndex}` },
+                { event: "Wind Speed", description: `Wind speed is ${extra.windSpeed} km/h` },
+                { event: "Rain Chance", description: `Chance of rain is ${extra.precipitationProbability}%` },
+                { event: "Humidity", description: `Humidity is ${extra.humidity}%` },
+                ];
+
+
+
+                // Update context with all the data
+                setWeatherData({
+                    searchLocation: null, // Reset search location after successful fetch
+                    location: {
+                        name,
+                        lat,
+                        lon
+                    },
+                    currentWeather: {
+                        temperatureC,
+                        weatherCondition,
+                        weatherType
+                    },
+                    forecast: formattedForecasts,
+                    alerts,
+                    loading: false,
+                    error: null
                 });
 
             } catch (error){
-                console.log(error);
+                console.error("Error fetching weather data:", error);
+                setWeatherData(prevData => ({ 
+                    ...prevData, 
+                    loading: false, 
+                    error: error.message || "Failed to fetch weather data",
+                    searchLocation: null // Reset search location on error too
+                }));
             }
-
         }
         
-       fetchWeatherInfo();
-    }, [location]);
+        fetchWeatherInfo();
+    }, [weatherData.searchLocation, setWeatherData]);
+
+    // Helper function to map OpenWeather icons to our app icons
+    function getWeatherType(iconCode, description) {
+        if (iconCode.includes('01')) return 'sunny'; // clear sky
+        if (iconCode.includes('02') || iconCode.includes('03')) return 'partlyCloudy'; // few/scattered clouds
+        if (iconCode.includes('04')) return 'cloudy'; // broken/overcast clouds
+        if (iconCode.includes('09') || iconCode.includes('10')) return 'rainy'; // rain
+        if (iconCode.includes('11')) return 'lightning'; // thunderstorm
+        if (iconCode.includes('13')) return 'snowy'; // snow
+        
+        // Fallback based on description
+        if (description.includes('cloud')) return 'cloudy';
+        if (description.includes('rain')) return 'rainy';
+        if (description.includes('thunder')) return 'lightning';
+        if (description.includes('snow')) return 'snowy';
+        
+        return 'sunny'; // default
+    }
 
     return null;
 }

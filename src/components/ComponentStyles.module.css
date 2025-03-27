@@ -258,7 +258,27 @@
     display: flex; /* Ensure the use of Flexbox */
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
-    margin: auto;
+    margin: 0 auto; /* Remove margin top/bottom, auto for left/right */
+    background-color: #0C7AE0;
+    font-size: 1.1rem; /* Slightly smaller font to fit AM/PM format */
+    font-weight: bold;
+    color: white;
+    width: 6.5rem; /* Slightly wider to fit the AM/PM text */
+    height: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 0 0.2rem; /* Add a bit of horizontal padding */
+    overflow: hidden; /* Prevent text overflow */
+    white-space: nowrap; /* Keep text on single line */
+    text-overflow: ellipsis; /* Show ellipsis for text that doesn't fit */
+}
+
+.day-card {
+    /* Identical styling to hour-card */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* Remove margin top/bottom, auto for left/right */
     background-color: #0C7AE0;
     font-size: 1.3rem;
     font-weight: bold;
@@ -267,6 +287,7 @@
     height: 2rem;
     border-radius: 1rem;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 0.3rem; /* Small gap between day and hour */
 }
 
 .icon-card {
@@ -292,36 +313,167 @@
 
 .forecast-card {
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    justify-content: center; /* Center items vertically */
-    align-items: center; /* Center items horizontally */
-    gap: 0.3rem; /* Reduce space between elements */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
     background-color: #62C3F7;
-    width: 6rem;
-    height: auto; /* Adjust height dynamically based on content */
+    width: 6.5rem; /* Restore the original width */
+    height: auto;
     border-radius: 1rem;
-    margin: 0; /* Remove unnecessary margins */
+    margin: 0; /* Remove margin from cards */
+    padding: 0.5rem 0;
+    transition: transform 0.2s;
+}
+
+.forecast-card:hover {
+    transform: scale(1.05); /* Slight zoom on hover for better interaction */
 }
 
 .forecast-list {
-    display: flex; /* Use flexbox to align items horizontally */
-    flex-direction: row; /* Ensure items are in a row */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Align vertically */
-    gap: 2rem; /* Reduce spacing between cards */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; /* Revert to space-around distribution */
+    align-items: center;
+    flex-wrap: nowrap; /* Keep items in a single row on larger screens */
+    gap: 0; /* Remove gap between items */
     background-color: #62C3F7;
-    width: 65%;
-    margin: auto;
+    width: 90%;
+    max-width: 1200px; /* Restore original max-width */
+    margin: 1rem auto;
     margin-bottom: 1rem;
     border-radius: 2rem;
-    padding: 1rem; /* Slight padding */
+    padding: 1rem 0.5rem; /* Reduced horizontal padding */
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Add minimal responsive fixes for smaller screens */
+@media (max-width: 768px) {
+    .forecast-list {
+        width: 95%;
+        overflow-x: auto; /* Allow horizontal scrolling on small screens */
+    }
+    
+    .forecast-card {
+        min-width: 6rem; /* Prevent cards from shrinking too much */
+    }
 }
 
 /* Adjust individual card elements */
 .degrees-card,
 .hour-card,
+.day-card,
 .icon-card {
     margin: 0; /* Remove unnecessary margin */
     padding: 0.2rem; /* Slight padding for compact spacing */
 }
+
+.error-message {
+  color: #ff4d4d;
+  font-size: 0.9rem;
+  text-align: center;
+  width: 100%;
+  padding: 5px;
+}
+
+.alert-bell-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .alert-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .alert-dot {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  
+  .alert-dropdown {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    width: 250px;
+    z-index: 999;
+  }
+  
+  .alert-item {
+    padding-bottom: 0.6rem;
+    margin-bottom: 0.6rem;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .alert-item:last-child {
+    border-bottom: none;
+  }
+
+/* Alert styles */
+.alert-bell-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.alert-icon {
+  width: 4.5rem;
+  height: 4.5rem;
+  vertical-align: middle;
+  margin-left: 20px;
+  transition: 0.3s;
+}
+
+.alert-icon:hover {
+  transform: scale(1.15);
+}
+
+.alert-dot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background-color: #ff3b30;
+  border-radius: 50%;
+}
+
+.alert-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 1000;
+  color: #000;
+}
+
+.alert-item {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.alert-item:last-child {
+  border-bottom: none;
+}
+
+.alert-item strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #0C7AE0;
+}
+
