@@ -1,6 +1,5 @@
-// src/pages/Location.jsx
-import React, { useState } from "react";
 import Navbar from '../components/CommonComponents/NavBar';
+import LocationSearchBox from "../components/CommonComponents/LocationSearchBox";
 
 export default function Location() {
     return (
@@ -8,7 +7,7 @@ export default function Location() {
             <header>
                 <Navbar />
             </header>
-            <p>This is the Location page for the ocean page</p>
+            <LocationSearchBox />
         </div>
     );
 }
