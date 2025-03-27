@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import styles from "../ComponentStyles.module.css";
 import MagnifyingGlass from "../../images/magnifyingGlass.png";
 import { useWeather } from "../../context/WeatherContext";
+import { useNavigate } from "react-router-dom";
 
-function TypeLocationBar() {
+function TypeLocationBar({type}) {
     const [location, setLocation] = useState("");
     const { setWeatherData } = useWeather();
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (location.trim()) {
+        if (type ==="ocean"){
+            navigate('/ocean');
+        } else if (location.trim()) {
             setWeatherData(prevData => ({ 
                 ...prevData, 
                 searchLocation: location, 

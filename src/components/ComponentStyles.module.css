@@ -57,7 +57,7 @@
     border-radius: 5px;          /* Rounded corners */
     padding: 0.3rem 0.8rem;       /* Add some padding */
     font-weight: bold;           /* Bold text for emphasis */
-    font-size: 1.3rem;
+    font-size: 1.8rem;     /* Increased size to match default */
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -90,7 +90,7 @@
 .weather-card {
     display: flex;
     align-items: center;
-    background-color: #C3E3FC;
+    background-color: #ffffff;  /* Improved contrast by changing to white, most noticeable when rain icon is set */
     border-radius: 10rem;
     padding: 4rem; 
     width: 33.375rem; 
@@ -243,7 +243,7 @@
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
     margin: auto;
-    background-color: #C3E3FC;
+    background-color: #ffffff;   /* Improved contrast by changing to white, most noticeable when rain icon is set */
     font-size: 1.8rem;
     font-weight: bold;
     color: #62C3F7;
@@ -295,7 +295,7 @@
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
     margin: auto;
-    background-color: #C3E3FC;
+    background-color: #ffffff; /* Improved contrast by changing to white, most noticeable when rain icon is set */
     font-size: 1.8rem;
     font-weight: bold;
     width: 6rem;
@@ -367,6 +367,55 @@
     margin: 0; /* Remove unnecessary margin */
     padding: 0.2rem; /* Slight padding for compact spacing */
 }
+
+
+/* Location page */
+.location-search-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 6rem auto;
+    padding: 1rem 3rem;
+    gap: 3rem;
+    background-color: rgba(98, 195, 247, 0.5);
+    border-radius: 3rem;
+    border-width: 0.3rem;
+    border-color: rgba(255, 255, 255, 0.5);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    width: 50%;
+    height: 25rem;
+}
+
+.location-search-box h1 {
+    font-size: 3rem;
+    color: #000;
+}
+
+
+.location-search-box .typeLocationBar {
+    border-radius: 3rem;
+    padding: 0.5rem 1rem;
+    width: 40rem;
+    height: 6rem; 
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    gap: 0.5rem;
+    margin: 0.5rem auto; 
+}
+
+.location-search-box .searchButton img {
+    width: 3rem;
+    height: 3rem;
+    transition: transform 0.2s ease-in-out;
+}
+
+.location-search-box .inputField {
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+
+
+
 
 .error-message {
   color: #ff4d4d;
