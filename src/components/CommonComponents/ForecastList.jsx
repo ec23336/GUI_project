@@ -13,7 +13,7 @@ function ForecastList() {
       <div className={styles["forecast-list"]}>
         {weatherData.loading ? (
           <p>Loading forecast data...</p>
-        ) : (
+        ) : ( 
           <p>No forecast data available</p>
         )}
       </div>

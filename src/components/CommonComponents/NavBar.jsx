@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from '../ComponentStyles.module.css'; // Importing the styles
-import AlertImg from '../../images/AlertImg.png'; // Import the image for the alert
+import AlertBell from './Alert'; // Import the AlertBell component instead of using the image directly
 
 const Navbar = () => {
     return (
@@ -16,11 +16,9 @@ const Navbar = () => {
                 <div className={styles["nav-links"]}>
                     <ul>
                         <li>
-                            {/* If using React Router v6, replace activeClassName as shown below */}
                             <NavLink 
                                 to="/location" 
                                 className={({ isActive }) => isActive ? styles["active-link"] : styles.navlink}
-                                // activeClassName={styles["active-link"]}  // Use this if using React Router v5 or earlier
                             >
                                 Ocean
                             </NavLink>
@@ -34,12 +32,7 @@ const Navbar = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink 
-                                to="/about" 
-                                className={({ isActive }) => isActive ? styles["active-link"] : styles.navlink}
-                            >
-                                <img src={AlertImg} alt="alerts" />
-                            </NavLink>
+                            <AlertBell /> {/* Replace the direct image with AlertBell component */}
                         </li>
                     </ul>
                 </div>

@@ -8,6 +8,7 @@ export function WeatherProvider({ children }) {
     searchLocation: null, // Add searchLocation for tracking user searches
     currentWeather: null,
     forecast: [],
+    alerts: [],
     loading: false,
     error: null,
   });

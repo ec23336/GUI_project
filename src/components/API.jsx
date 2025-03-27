@@ -75,6 +75,22 @@ function GrabAPI() {
                     };
                 });
 
+
+                const tomorrowKey = "5AzjYZBIYN50gnL4qrOhiQzcujYX8Ogz";
+                const extraRes = await fetch(`https://api.tomorrow.io/v4/weather/realtime?location=${lat},${lon}&apikey=${tomorrowKey}`);
+                const extraData = await extraRes.json();
+                const extra = extraData.data?.values || {};
+
+                let alerts = [
+                { event: "Feels Like", description: `Feels like ${extra.temperatureApparent}°C` },
+                { event: "UV Index", description: `UV Index is ${extra.uvIndex}` },
+                { event: "Wind Speed", description: `Wind speed is ${extra.windSpeed} km/h` },
+                { event: "Rain Chance", description: `Chance of rain is ${extra.precipitationProbability}%` },
+                { event: "Humidity", description: `Humidity is ${extra.humidity}%` },
+                ];
+
+
+
                 // Update context with all the data
                 setWeatherData({
                     searchLocation: null, // Reset search location after successful fetch
@@ -89,6 +105,7 @@ function GrabAPI() {
                         weatherType
                     },
                     forecast: formattedForecasts,
+                    alerts,
                     loading: false,
                     error: null
                 });
