@@ -1,0 +1,79 @@
+.ocean-middle {
+    display: flex;
+    justify-content: space-around; /* Distribute space evenly */
+    align-items: flex-start; /* Align items at the top */
+    flex-wrap: wrap;
+    gap: 2vw; /* Increased gap for better spacing */
+    padding: 2vh 2vw;
+    width: 100%; /* Ensure full width */
+}
+
+.ocean-c {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vh; /* Increased vertical spacing */
+    min-width: 20vw; /* Minimum width */
+    flex: 1; /* Allow flexible growth */
+    max-width: 25vw; /* Maximum width to prevent overexpansion */
+}
+
+/* Center the middle weather section */
+.ocean-c:nth-child(2) {
+    align-items: center;
+    justify-content: flex-start; /* Align content at the top */
+    text-align: center;
+    min-width: 25vw; /* Slightly bigger than side columns */
+}
+
+/* Weather card */
+.WeatherCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Take full width of parent */
+    padding: 1.5vh; /* Slightly more padding */
+    background: white;
+    border-radius: 20px;
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Bottom alerts (Storm + Visibility) */
+.ocean-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw; /* Increased gap */
+    padding: 2vh;
+    width: 100%;
+}
+
+/* Alert cards */
+.StormCard, .VisibilityCard {
+    width: 30vw; /* Wider cards for better readability */
+    padding: 1.5vh;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Sunrise & Sunset Card */
+.SunriseCard, .SunsetCard {
+    text-align: center;
+    font-size: 1rem;
+    width: 100%; /* Full width of parent */
+    box-sizing: border-box;
+}
+
+/* Tides & Water Info */
+.TidesCard, .WaterCard {
+    text-align: center;
+    width: 100%; /* Full width of parent */
+    box-sizing: border-box;
+}
+
+/* "Now showing" text */
+.ocean-c p {
+    margin-bottom: 1vh;
+    width: 100%;
+    text-align: center;
+}

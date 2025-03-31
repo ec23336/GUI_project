@@ -1,4 +1,4 @@
-import styles from '../components/ComponentStyles.module.css';
+import styles from '../components/OceanStyles.module.css';
 import Navbar from '../components/CommonComponents/NavBar';
 import WeatherCard from '../components/CommonComponents/WeatherCard';
 import SunriseCard from '../components/CommonComponents/SunriseCard';
@@ -35,6 +35,9 @@ export default function Ocean() {
           <div className={styles["ocean-bottom"]}>
             <StormCard />
             <VisibilityCard />
+          </div>
+          <div className={styles["ocean-wind"]}>
+            
           </div>
         </div>
     );
