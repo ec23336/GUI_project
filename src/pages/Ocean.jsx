@@ -9,6 +9,7 @@ import TidesCard from '../components/CommonComponents/TidesCard';
 import WaterCard from '../components/CommonComponents/WaterCard';
 import StormCard from '../components/CommonComponents/StormCard';
 import VisibilityCard from '../components/CommonComponents/VisibilityCard';
+import FishingConditions from '../components/CommonComponents/conditions';
 
 export default function Ocean() {
     return (
@@ -25,6 +26,7 @@ export default function Ocean() {
               <p>Now showing ...</p>
               <WeatherCard temperature={25} weatherIcon="sunny" />
               <WindCard />
+              <FishingConditions/>
               <ExtraInfoCard />
             </div>
             <div className={styles["ocean-c"]}>
@@ -35,9 +37,6 @@ export default function Ocean() {
           <div className={styles["ocean-bottom"]}>
             <StormCard />
             <VisibilityCard />
-          </div>
-          <div className={styles["ocean-wind"]}>
-            
           </div>
         </div>
     );

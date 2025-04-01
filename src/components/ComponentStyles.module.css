@@ -613,3 +613,132 @@
   color: #0C7AE0;
 }
 
+/* WindCard with icons and horizontal layout */
+.Wind {
+    background-color: rgba(223, 223, 233, 0.85);
+    border-radius: 1.25rem;
+    padding: 1em;
+    width: 100%;
+    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0.5em;
+    font-size: 1rem;
+  }
+  
+  .wind-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 4em;
+  }
+  
+  .wind-icon {
+    font-size: 1.5em;
+    margin-bottom: 0.3em;
+    color: #3498db;
+  }
+  
+  .wind-value {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #2c3e50;
+  }
+  
+  .wind-label {
+    font-size: 0.9em;
+    color: #7f8c8d;
+    margin-top: 0.2em;
+  }
+
+
+  /* FishingConditions.module.css */
+.fishingConditions {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 1.25rem;
+    padding: 1em;
+    width: 100%;
+    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  .conditionRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5em;
+  }
+  
+  .conditionLabel {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1.1em;
+  }
+  
+  .conditionValue {
+    color: #3498db;
+    font-size: 1.1em;
+  }
+  
+  .currentFlow {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+  
+  .flowDirection {
+    font-size: 0.9em;
+    color: #7f8c8d;
+  }
+
+/* Unified Card Style (matches Tides/Water) */
+.Storm, .Visibility, .Wind, .FishingConditions {
+    font-size: 1.2rem;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(195, 227, 252, 0.75);
+    border-radius: 6rem;
+    border: 0.2rem solid rgba(0, 0, 0, 0.75);
+    padding: 1.5rem 2rem;
+    width: 25rem; /* Matching width */
+    height: auto; 
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
+    gap: 0.5rem;
+    margin: 1rem auto; /* Centered */
+}
+
+/* Card Headers */
+.Storm h3, .Visibility h3 {
+    color: #000;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Specific Card Colors */
+.Storm {
+    border-left: 0.5rem solid #ff4d4d; /* Red accent */
+}
+
+.Visibility {
+    border-left: 0.5rem solid #4d79ff; /* Blue accent */
+}
+
+.Wind {
+    border-left: 0.5rem solid #0C7AE0; /* Dark blue accent */
+}
+
+/* Wind Card Layout Adjustments */
+.Wind {
+    flex-direction: row; /* Keep horizontal layout */
+    justify-content: space-around;
+    padding: 1rem 1rem;
+}
+
+.wind-item {
+    min-width: 6rem; /* More space for wind elements */
+}
+
