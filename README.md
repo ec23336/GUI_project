@@ -93,10 +93,10 @@ http://localhost:5173/
 - Ocean page, allowing for more specific marine weather data for desired location 
 
 # Ackoweldgements
-## OpenWeatherMap API
-## Windy API
-## Tomorrow.io API
-## Vite, React, CSS
+- OpenWeatherMap API
+- Windy API
+- Tomorrow.io API
+- Vite, React, CSS
 
 # Contributors
 - Rafi Subhan
