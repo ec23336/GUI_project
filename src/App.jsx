@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './App.css';
 import AppRouter from './AppRouter';
 import backgroundImage from './images/base.png'; // Import the image
-import GrabAPI from './components/API';
-import MarineDataAPI from './components/MarineDataAPI';
+import GrabAPI from './components/API_CODE/API'; // Fixed import path
+import MarineDataAPI from './components/API_CODE/MarineDataAPI';
 import { WeatherProvider } from './context/WeatherContext';
 
 function App() {

@@ -4,16 +4,26 @@ import MagnifyingGlass from "../../images/magnifyingGlass.png";
 import { useWeather } from "../../context/WeatherContext";
 import { useNavigate } from "react-router-dom";
 
-function TypeLocationBar({type}) {
+function TypeLocationBar({ type, onSearch }) {
     const [location, setLocation] = useState("");
     const { setWeatherData } = useWeather();
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (type ==="ocean"){
-            navigate('/ocean');
-        } else if (location.trim()) {
+        
+        if (!location.trim()) return;
+        
+        // Call the onSearch prop if provided
+        if (onSearch) {
+            onSearch(location);
+        }
+        
+        if (type === "ocean") {
+            // Navigate to Ocean page with location as query parameter
+            navigate(`/ocean?location=${encodeURIComponent(location)}`);
+        } else {
+            // Update weather context for regular searches
             setWeatherData(prevData => ({ 
                 ...prevData, 
                 searchLocation: location, 
@@ -21,8 +31,10 @@ function TypeLocationBar({type}) {
                 loading: true,
                 error: null
             }));
-            setLocation("");
         }
+        
+        // Clear input field after submission
+        setLocation("");
     };
 
     return (
