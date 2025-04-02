@@ -1,11 +1,12 @@
 import styles from '../ComponentStyles.module.css';
+import TidesIcon from '../../images/Marine-icons/Tides.svg';
 
-function TidesCard() {
+function TidesCard({high, low}) {
     return (
         <div className={styles['Tides']}>
-            <p>High Tide: 14:00</p>
-            <img src="src\images\Marine-icons\Tides.svg" alt="tides"/>
-            <p>Low Tide: 20:30</p>
+            <p>High Tide: {high}</p>
+            <img src={TidesIcon} alt="tides"/>
+            <p>Low Tide: {low}</p>
         </div>
 
     );

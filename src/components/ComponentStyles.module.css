@@ -413,94 +413,8 @@
     margin-left: 1rem;
 }
 
-/* Ocean Page */
-.ocean-middle {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: nowrap;
-    padding: 0rem 1rem;
-    gap: 3rem;
-}
 
-.ocean-c {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 3rem 1rem;
-    padding: 1rem 3rem;
-    gap: 3rem;
-}
 
-.ocean-bottom {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 3rem;
-    gap: 3rem;
-}
-
-.Sun {
-    color: #FF5900;
-    font-size: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.Sun img {
-    width: 10rem;
-    height: 10rem;
-}
-
-.Tides {
-    font-size: 1.7rem;
-    color: #000;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(195, 227, 252, 0.75);
-    border-radius: 6rem;
-    border-width: 0.2rem;
-    border-color: rgba(0, 0, 0, 0.75);
-    padding: 0.5rem 1rem;
-    width: 25rem;
-    height: 12rem; 
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
-    gap: 0.3rem;
-}
-
-.Tides img{
-    width: 4rem;
-    height: 4rem;
-}
-
-.Water {
-    font-size: 1.5rem;
-    color: #000;
-    display: grid;
-    grid-template-columns: auto auto;
-    align-content: center;
-    gap: 0.1rem 0.3rem;
-    background-color: rgba(195, 227, 252, 0.75);
-    border-radius: 6rem;
-    border-width: 0.2rem;
-    border-color: rgba(0, 0, 0, 0.75);
-    padding: 1rem 3rem;
-    width: 25rem;
-    height: 12rem; 
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
-}
-
-.Water img{
-    width: 4.5rem;
-    height: 4.5rem;
-}
 
 
 
@@ -516,14 +430,14 @@
     position: relative;
     display: inline-block;
     cursor: pointer;
-  }
-  
-  .alert-icon {
+}
+
+.alert-icon {
     width: 40px;
     height: 40px;
-  }
-  
-  .alert-dot {
+}
+
+.alert-dot {
     position: absolute;
     top: 2px;
     right: 2px;
@@ -531,9 +445,9 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-  }
-  
-  .alert-dropdown {
+}
+
+.alert-dropdown {
     position: absolute;
     top: 110%;
     right: 0;
@@ -544,17 +458,17 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     width: 250px;
     z-index: 999;
-  }
-  
-  .alert-item {
+}
+
+.alert-item {
     padding-bottom: 0.6rem;
     margin-bottom: 0.6rem;
     border-bottom: 1px solid #ccc;
-  }
-  
-  .alert-item:last-child {
+}
+
+.alert-item:last-child {
     border-bottom: none;
-  }
+}
 
 /* Alert styles */
 .alert-bell-wrapper {
@@ -613,132 +527,335 @@
   color: #0C7AE0;
 }
 
-/* WindCard with icons and horizontal layout */
-.Wind {
-    background-color: rgba(223, 223, 233, 0.85);
-    border-radius: 1.25rem;
-    padding: 1em;
-    width: 100%;
-    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 0.5em;
-    font-size: 1rem;
-  }
-  
-  .wind-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 4em;
-  }
-  
-  .wind-icon {
-    font-size: 1.5em;
-    margin-bottom: 0.3em;
-    color: #3498db;
-  }
-  
-  .wind-value {
-    font-size: 1.1em;
-    font-weight: 500;
-    color: #2c3e50;
-  }
-  
-  .wind-label {
-    font-size: 0.9em;
-    color: #7f8c8d;
-    margin-top: 0.2em;
-  }
+/* Ocean Page */
 
 
-  /* FishingConditions.module.css */
 .fishingConditions {
-    background-color: rgba(255, 255, 255, 0.85);
-    border-radius: 1.25rem;
-    padding: 1em;
-    width: 100%;
-    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
-  }
-  
-  .conditionRow {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.5em;
-  }
-  
-  .conditionLabel {
-    font-weight: bold;
-    color: #2c3e50;
-    font-size: 1.1em;
-  }
-  
-  .conditionValue {
-    color: #3498db;
-    font-size: 1.1em;
-  }
-  
-  .currentFlow {
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-  }
-  
-  .flowDirection {
-    font-size: 0.9em;
-    color: #7f8c8d;
-  }
+    background-color: #C3E3FC;
+    padding: 0.625em 1.25em;
+    border-radius: 5em;
+    border: 0.15rem solid black;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+    width: 25em;
+    height: 6em;
+    margin-top: 1rem;
+}
 
-/* Unified Card Style (matches Tides/Water) */
-.Storm, .Visibility, .Wind, .FishingConditions {
-    font-size: 1.2rem;
-    color: #000;
+.conditionsLeft, .conditionsRight {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background-color: rgba(195, 227, 252, 0.75);
-    border-radius: 6rem;
-    border: 0.2rem solid rgba(0, 0, 0, 0.75);
-    padding: 1.5rem 2rem;
-    width: 25rem; /* Matching width */
-    height: auto; 
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
-    gap: 0.5rem;
-    margin: 1rem auto; /* Centered */
+    padding: 0.625em 1.25em;
 }
 
-/* Card Headers */
-.Storm h3, .Visibility h3 {
-    color: #000;
-    font-size: 1.4rem;
-    margin-bottom: 0.5rem;
+.conditionsLeft:hover, .conditionsRight:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    transition: transform 0.3s ease-in-out; /* Smooth transition for the hover effect */
 }
 
-/* Specific Card Colors */
+
+.moonIcon, .boatIcon {
+    width: 3em;
+    height: 3em;
+}
+
+.fishingConditions span {
+    font-size: 0.875em;
+    font-weight: bold;
+    color: #333;
+}
+
 .Storm {
-    border-left: 0.5rem solid #ff4d4d; /* Red accent */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, #FF0000, #FF7C1F, #FF7C1F, #FF7C1F, #FF0000); /* Three-color gradient */
+    padding: 1.5em;
+    color: white;
+    border-radius: 5em;
+    text-align: center;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
+    width: 20.5em;
+    height: 10em;
+    border: 0.15rem solid black;
+    transition: transform 0.3s ease-in-out, background-position 0.5s ease-in-out;
+    background-size: 100% 300%; /* Three times the height of the container */
+    background-position: top;
+}
+
+.Storm:hover {
+    transform: scale(1.05);
+    background-position: bottom; /* Reverse the gradient */
+}
+
+.alertIcon {
+    width: 3.3em;
+    height: 3.3em;
+    transition: transform 0.4s ease-in-out;
+}
+
+.alertIcon:hover {
+    transform: scale(1.05);
+}
+
+.Storm h3 {
+    margin: 0;
+    font-size: 1.6em;
+    text-align: center;
+    color: black;
+}
+
+.Storm p {
+    font-size: 1.15em;
+    text-align: center;
+    color: black;
+    width : 80%;
+    margin-bottom: 0.5em;
 }
 
 .Visibility {
-    border-left: 0.5rem solid #4d79ff; /* Blue accent */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, #FF8800, #FF9700, #FFC04D, #FFC04D, #FF9700, #FF8800); 
+    color: white;
+    padding: 1.5em;
+    border-radius: 5em;
+    text-align: center;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
+    width: 20.5em;
+    height: 10em;
+    border: 0.15rem solid black;
+    transition: transform 0.3s ease-in-out, background-position 0.5s ease-in-out;
+    background-size: 100% 300%; /* Three times the height of the container */
+    background-position: top;
 }
 
-.Wind {
-    border-left: 0.5rem solid #0C7AE0; /* Dark blue accent */
+.Visibility:hover {
+    transform: scale(1.05);
+    background-position: bottom; /* Reverse the gradient */
 }
 
-/* Wind Card Layout Adjustments */
-.Wind {
-    flex-direction: row; /* Keep horizontal layout */
-    justify-content: space-around;
-    padding: 1rem 1rem;
+.bellIcon {
+    width: 3.3em;
+    height: 3.3em;
+    transition: transform 0.4s ease-in-out;
 }
 
-.wind-item {
-    min-width: 6rem; /* More space for wind elements */
+.bellIcon:hover {
+    transform: scale(1.05);
 }
 
+
+.Visibility p {
+    font-size: 1.3em;
+    text-align: center;
+    color: black;
+    width : 80%;
+    margin-bottom: 0.5em;
+}
+
+.WindCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #C3E3FC;
+    padding: 0.625em 1.25em;
+    border-radius: 5em;
+    border: 0.15rem solid black;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+    width: 29em;
+    height: 6.2em;
+    padding-left: 4.5rem;
+    padding-right: 4.5rem;
+}
+
+.WindSpeed, .WindDirection, .RainChance {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.4s ease-in-out;
+}
+
+.WindSpeed:hover, .WindDirection:hover, .RainChance:hover {
+    transform: scale(1.1);
+}
+
+.WindImages {
+    width: 3.2em;
+    height: 3.2em;
+}
+
+.WindCard p {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #333;
+}
+
+.Sun {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.SunImage {
+    height: 6rem;
+    width: 10rem;
+}
+
+.Sun p {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #FF5900;
+}
+
+.Tides {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #C3E3FC;
+    padding: 0.625em 1.25em;
+    border-radius: 5em;
+    border: 0.15rem solid black;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+    width: 20.5em;
+    height: 11em;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.Tides p {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #333;
+}
+
+.Tides p:hover {
+    color: #0C7AE0; /* Change text color on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    transition: transform 0.3s ease-in-out; /* Smooth transition for the hover effect */
+}
+
+.Tides img {
+    width: 3.2em;
+    height: 3.2em;
+}
+
+.Water {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    background-color: #C3E3FC;
+    padding: 0.625em 1.25em;
+    border-radius: 5em;
+    border: 0.15rem solid black;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+    width: 20.5em;
+    height: 11em;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.WaveHeight, .WaterTemp {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Vertically center content */
+    justify-content: flex-start; /* Align the items to the left */
+    gap: 0.5rem; /* Small gap between icon and text */
+}
+
+.WaveHeight:hover, .WaterTemp:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    transition: transform 0.3s ease-in-out; /* Smooth transition for the hover effect */
+}
+
+.WaveHeight:hover p, .WaterTemp:hover p {
+    color: #0C7AE0; /* Change text color on hover */
+}
+
+.WaveHeightIcon, .WaterTempIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.WaveHeightIcon img, .WaterTempIcon img {
+    width: 3.8em;
+    height: 3.8em;
+    margin: 0; /* Ensure no margin is applied to the images */
+}
+
+.WaveHeightText, .WaterTempText {
+    display: flex;
+    align-items: center; /* Vertically center the text */
+    justify-content: flex-start;
+}
+
+.WaveHeight p, .WaterTemp p {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    margin: 0; /* Remove any default margin */
+    padding-left: 1rem;
+    padding-right: 1rem;
+    line-height: 1; 
+}
+
+.WaterTempIcon img {
+    margin-left: 0.5rem;
+}
+
+.ExtraInfo {
+    color: white;
+    font-size: 1.9em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.OceanContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.OceanTop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.OceanTopLeft, .OceanTopRight, .OceanTopMiddle { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2rem; /* Add space between the two sections */
+}
+
+.OceanBottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem; 
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+
+
+
+
+
+
+
+}

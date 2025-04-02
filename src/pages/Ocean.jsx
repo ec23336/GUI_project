@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from '../components/OceanStyles.module.css';
+import styles from '../components/ComponentStyles.module.css';
 import Navbar from '../components/CommonComponents/NavBar';
 import WeatherCard from '../components/CommonComponents/WeatherCard';
 import SunriseCard from '../components/CommonComponents/SunriseCard';
@@ -12,7 +13,6 @@ import WaterCard from '../components/CommonComponents/WaterCard';
 import StormCard from '../components/CommonComponents/StormCard';
 import VisibilityCard from '../components/CommonComponents/VisibilityCard';
 import FishingConditions from '../components/CommonComponents/conditions';
-import MarineDataAPI from '../components/API_CODE/MarineDataAPI';
 
 export default function Ocean() {
     const location = useLocation();
@@ -50,15 +50,21 @@ export default function Ocean() {
               <FishingConditions/>
               <ExtraInfoCard />
             </div>
-            <div className={styles["ocean-c"]}>
-              <SunsetCard />
-              <WaterCard />
+            <div className={styles['OceanBottom']}>
+              <StormCard hours="None" />
+              <VisibilityCard kilometers={5} />
             </div>
-          </div>
-          <div className={styles["ocean-bottom"]}>
-            <StormCard />
-            <VisibilityCard />
           </div>
         </div>
     );
 }
+
+// FishingConditions fishTime="5:00 AM - 7:00 AM" currentFlow="1.8KT SW" /
+//StormCard hours="None" /
+//VisibilityCard kilometers={5} /
+//WindCard speed="12" direction="SW" rainPercent="14" /
+//SunriseCard time="6:00 AM" /
+//SunsetCard time="7:00 PM" /
+//WeatherCard customTemperature='23' customWeatherIcon='rainy'/
+//TidesCard high="12:00 PM" low="6:00 PM" /
+//WaterCard waveHeight='2.5' waterTemp='22' /

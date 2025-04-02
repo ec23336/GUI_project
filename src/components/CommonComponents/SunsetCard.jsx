@@ -1,11 +1,12 @@
 import styles from '../ComponentStyles.module.css';
+import SunsetIcon from '../../images/Marine-icons/Sunset.svg';
 
-function SunsetCard() {
+function SunsetCard({time}) {
     return (
         <div className={styles['Sun']}>
-            <img src="src\images\Marine-icons\Sunset.svg" alt="sunset"/>
+            <img src={SunsetIcon} alt="sunset" className={styles['SunImage']}/>
             <p>SUNSET</p>
-            <p>18:00</p>
+            <p>{time}</p>
         </div>
 
     );
