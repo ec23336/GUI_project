@@ -1,10 +1,20 @@
 import styles from '../ComponentStyles.module.css';
+import alertIcon from '../../images/Marine-icons/OctAlert.svg';
 
-function StormCard() {
+function StormCard({ hours }) {
+    let message;
+    
+    if (hours === 'None') {
+        message = "No storm alerts at this time.";
+    } else {
+        message = "Thunderstorm expected in " + hours + " hours.";
+    }
+    
     return (
         <div className={styles['Storm']}>
+            <img src={alertIcon} alt="alert icon" className={styles['alertIcon']} />
             <h3>STORM ALERT</h3>
-            <p>Thunderstorm expected in 4 hours</p>
+            <p>{message}</p>
         </div>
     );
 }
