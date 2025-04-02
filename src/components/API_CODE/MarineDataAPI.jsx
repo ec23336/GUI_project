@@ -4,6 +4,7 @@ const MarineDataAPI = ({ marineLocation }) => {
     const [marineData, setMarineData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [weatherApiData, setWeatherApiData] = useState(null);
 
     useEffect(() => {
         const fetchMarineData = async () => {
@@ -33,6 +34,7 @@ const MarineDataAPI = ({ marineLocation }) => {
 
                 coordinates = `${lat},${lon}`;
            
+                // Fetch marine data from WorldWeatherOnline
                 const apiUrl = `http://api.worldweatheronline.com/premium/v1/marine.ashx?key=7f4bda632a6e426ea7b164922251903&format=json&q=${coordinates}`;
                 
                 const response = await fetch(apiUrl);
@@ -42,6 +44,22 @@ const MarineDataAPI = ({ marineLocation }) => {
                 }
                 
                 const data = await response.json();
+
+                // Fetch data from weatherapi.com
+                try {
+                    const weatherApiUrl = `https://api.weatherapi.com/v1/forecast.json?key=575b8bdcab094c5786400430250204&q=${coordinates}&days=7&aqi=yes&alerts=yes`;
+                    const weatherApiResponse = await fetch(weatherApiUrl);
+                    
+                    if (weatherApiResponse.ok) {
+                        const weatherData = await weatherApiResponse.json();
+                        console.log("Weather API data:", weatherData);
+                        setWeatherApiData(weatherData);
+                    } else {
+                        console.error("Weather API error:", weatherApiResponse.status);
+                    }
+                } catch (weatherApiError) {
+                    console.error("Error fetching Weather API data:", weatherApiError);
+                }
 
                 const middayForecasts = data.data.weather.map((forecast) => ({
                     date: forecast.date,
@@ -80,7 +98,21 @@ const MarineDataAPI = ({ marineLocation }) => {
     return (
         <div>
             <h2>Marine Weather Data</h2>
-            <p>Data successfully fetched! Check the console for details.</p>
+            {loading ? (
+                <p>Loading...</p>
+            ) : error ? (
+                <p>Error: {error}</p>
+            ) : (
+                <div>
+                    <p>Data successfully fetched! Check the console for details.</p>
+                    
+                    {weatherApiData && (
+                        <div className="weather-api-data">
+                            <h3>Weather API Data</h3>
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
     );
 };

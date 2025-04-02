@@ -1,39 +1,46 @@
 import React, { useState, useEffect } from "react";
 import styles from "../ComponentStyles.module.css";
-import LocationFinder from "./LocationFinder";
+import LocationFinder from "../API_CODE/LocationFinder";
 import { useWeather } from "../../context/WeatherContext";
 
 function DisplayLocationCard({ locationProp }) {
-  const [location, setLocation] = useState(locationProp);
+  const [displayLocation, setDisplayLocation] = useState(locationProp);
   const { weatherData, setWeatherData } = useWeather();
 
   useEffect(() => {
-    // Prioritize manual location over auto-detected location
-    if (weatherData.searchLocation && weatherData.manualLocationSet) {
-      setLocation(weatherData.searchLocation);
-    } 
-    else if (locationProp !== "Loading..." && !weatherData.manualLocationSet) {
-      setLocation(locationProp);
+    // If there's location data in the context, prioritize that
+    if (weatherData.location && weatherData.location.name) {
+      setDisplayLocation(weatherData.location.name);
     }
-  }, [weatherData.searchLocation, locationProp, weatherData.manualLocationSet]);
+    // Otherwise, if searchLocation is set and manual location is enabled
+    else if (weatherData.searchLocation && weatherData.manualLocationSet) {
+      setDisplayLocation(weatherData.searchLocation);
+    } 
+    // Fallback to the prop or auto-detected location
+    else if (locationProp !== "Loading..." && !weatherData.manualLocationSet) {
+      setDisplayLocation(locationProp);
+    }
+  }, [weatherData.location, weatherData.searchLocation, locationProp, weatherData.manualLocationSet]);
 
   const handleLocationFound = (foundLocation) => {
     if (!weatherData.manualLocationSet) {
-      setLocation(foundLocation);
+      setDisplayLocation(foundLocation);
       setWeatherData(prev => ({
         ...prev,
+        searchLocation: foundLocation,
         autoLocation: foundLocation
-      }));
+      })); 
     }
   };
 
   return (
     <div className={styles.locationDisplay}>
+      {/* Add location icon for visual consistency */}
       <span className={styles.locationText}>
-        {location === "Loading..." ? "Loading..." : location}
+        {displayLocation === "Loading..." ? "Finding your location..." : displayLocation}
       </span>
 
-      {location === "Loading..." && !weatherData.manualLocationSet && 
+      {displayLocation === "Loading..." && !weatherData.manualLocationSet && 
         <LocationFinder onLocationFound={handleLocationFound} />
       }
     </div>

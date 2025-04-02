@@ -1,3 +1,4 @@
+import React from 'react';
 import Navbar from '../components/CommonComponents/NavBar';
 import LocationSearchBox from "../components/CommonComponents/LocationSearchBox";
 

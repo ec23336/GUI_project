@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useWeather } from "../context/WeatherContext";
+import { useWeather } from "../../context/WeatherContext";
 
 function GrabAPI() {
     const { weatherData, setWeatherData } = useWeather();

@@ -12,7 +12,6 @@ const AppRouter = () => {
         <Route path="/ocean" element={<Ocean />} />
         <Route path="/map" element={<Map />} />
         <Route path="/location" element={<Location />} />
-        
       </Routes>
     </Router>
   );
