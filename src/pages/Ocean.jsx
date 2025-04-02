@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import styles from '../components/OceanStyles.module.css';
 import styles from '../components/ComponentStyles.module.css';
 import Navbar from '../components/CommonComponents/NavBar';
 import WeatherCard from '../components/CommonComponents/WeatherCard';
@@ -38,24 +37,30 @@ export default function Ocean() {
           {/* Render MarineDataAPI component to fetch and log data */}
           {marineLocation && <MarineDataAPI marineLocation={marineLocation} />}
           
-          <div className={styles["ocean-middle"]}>
-            <div className={styles["ocean-c"]}>
-              <SunriseCard />
-              <TidesCard />
-            </div>
-            <div className={styles["ocean-c"]}>
-              <p>Now showing {marineLocation || '...'}</p>
-              <WeatherCard temperature={25} weatherIcon="sunny" />
-              <WindCard />
-              <FishingConditions/>
-              <ExtraInfoCard />
+          <div className={styles['OceanContainer']}>
+            <div className={styles['OceanTop']}>
+              <div className={styles['OceanTopLeft']}>
+                <SunriseCard time="6:00 AM" />
+                <TidesCard high="12:00 PM" low="6:00 PM" />
+              </div>
+              <div className={styles['OceanTopMiddle']}>
+                <ExtraInfoCard location="Plymouth" />
+                <WeatherCard customTemperature='23' customWeatherIcon='rainy'/>
+                <WindCard speed="12" direction="SW" rainPercent="14" />
+                <FishingConditions fishTime="5:00 AM - 7:00 AM" currentFlow="1.8KT SW" />
+              </div>
+              <div className={styles['OceanTopRight']}>
+                <SunsetCard time="7:00 PM" />
+                <WaterCard waveHeight='2.5' waterTemp='22' />
+              </div>
             </div>
             <div className={styles['OceanBottom']}>
               <StormCard hours="None" />
               <VisibilityCard kilometers={5} />
             </div>
           </div>
-        </div>
+          
+        </div> 
     );
 }
 
