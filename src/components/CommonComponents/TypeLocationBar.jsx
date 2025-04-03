@@ -4,26 +4,33 @@ import MagnifyingGlass from "../../images/magnifyingGlass.png";
 import { useWeather } from "../../context/WeatherContext";
 import { useNavigate } from "react-router-dom";
 
-function TypeLocationBar({ type, onSearch }) {
+function TypeLocationBar({type}) {
     const [location, setLocation] = useState("");
     const { setWeatherData } = useWeather();
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
-        if (!location.trim()) return;
-        
-        // Call the onSearch prop if provided
-        if (onSearch) {
-            onSearch(location);
-        }
-        
         if (type === "ocean") {
-            // Navigate to Ocean page with location as query parameter
-            navigate(`/ocean?location=${encodeURIComponent(location)}`);
-        } else {
-            // Update weather context for regular searches
+            navigate('/ocean');
+        } else if (type === "marine") {
+            // For marine searches, navigate to the Ocean page with location parameter
+            if (location.trim()) {
+                // Update context
+                setWeatherData(prevData => ({ 
+                    ...prevData, 
+                    searchLocation: location, 
+                    manualLocationSet: true,
+                    loading: true,
+                    error: null
+                }));
+                
+                // Navigate to Ocean page with location parameter
+                navigate(`/ocean?location=${encodeURIComponent(location)}`);
+                setLocation("");
+            }
+        } else if (location.trim()) {
+            // Default behavior for other types
             setWeatherData(prevData => ({ 
                 ...prevData, 
                 searchLocation: location, 
@@ -31,10 +38,8 @@ function TypeLocationBar({ type, onSearch }) {
                 loading: true,
                 error: null
             }));
+            setLocation("");
         }
-        
-        // Clear input field after submission
-        setLocation("");
     };
 
     return (

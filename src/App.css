@@ -1,5 +1,5 @@
 /* App.css */
-@import "tailwindcss";
+/* Remove Tailwind import */
 
 /* Ensure this applies globally */
 body {

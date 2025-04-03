@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../ComponentStyles.module.css';
 import { useWeather } from '../../context/WeatherContext';
+import { ThermometerSun } from 'lucide-react'; // Correct import for ThermometerSun icon
 
 // Weather icon imports
 import cloudy from '../../images/WeatherIcons/cloudy.png';
@@ -20,7 +21,7 @@ const weatherIcons = {
   partlyCloudy
 };
 
-function WeatherCard({ customTemperature, customWeatherIcon }) {
+function WeatherCard({ customTemperature, customWeatherIcon, isOceanPage = false }) {
   const { weatherData } = useWeather();
   
   // Show loading state if weather data is being fetched
@@ -50,14 +51,26 @@ function WeatherCard({ customTemperature, customWeatherIcon }) {
   const icon = weatherIcons[weatherType] || weatherIcons.sunny;
 
   return (
-    <div className={styles['weather-card']}>
-      <div className={styles['weather-left']}>
-        <img src={icon} alt="weather-icon" />
+    <div className={`${styles['weather-card']} ${styles['weather-card-centered']}`}>
+      <div className={`${styles['weather-left']} ${styles['weather-left-centered']}`}>
+        {isOceanPage ? (
+          <div className={styles['airtemp-text-container']}>
+            <ThermometerSun 
+              size={48} // Increased from 32 to 48
+              className={styles['thermometer-sun-icon']}
+            />
+            <div className={styles['airtemp-text']}>
+              AIR TEMP<br />1.25m - 2m<br />above ground
+            </div>
+          </div>
+        ) : (
+          <img src={icon} alt="weather-icon" />
+        )}
       </div>
       
-      <div className={styles.divider}></div>
+      <div className={`${styles.divider} ${styles['divider-centered']}`}></div>
 
-      <div className={styles['weather-right']}>
+      <div className={`${styles['weather-right']} ${styles['weather-right-centered']}`}>
         <span>{temperature}°C</span>
       </div>
     </div>

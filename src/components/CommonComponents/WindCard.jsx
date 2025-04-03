@@ -1,47 +1,60 @@
 import styles from '../ComponentStyles.module.css';
-import WindN from '../../images/Marine-icons/Arrows/WindN.svg';
-import WindNE from '../../images/Marine-icons/Arrows/WindNE.svg';
-import WindE from '../../images/Marine-icons/Arrows/WindE.svg';
-import WindSE from '../../images/Marine-icons/Arrows/WindSE.svg';
-import WindS from '../../images/Marine-icons/Arrows/WindS.svg';
-import WindSW from '../../images/Marine-icons/Arrows/WindSW.svg';
-import WindW from '../../images/Marine-icons/Arrows/WindW.svg';
-import WindNW from '../../images/Marine-icons/Arrows/WindNW.svg';
+import { 
+    ArrowUp, 
+    ArrowUpRight, 
+    ArrowRight, 
+    ArrowDownRight,
+    ArrowDown,
+    ArrowDownLeft,
+    ArrowLeft,
+    ArrowUpLeft
+} from 'lucide-react'; // Import Lucide icons
 import WindIcon from '../../images/Marine-icons/Wind.svg';
 import RainCloudIcon from '../../images/Marine-icons/RainCloud.svg';
 
-
 function WindCard({speed, direction, rainPercent}) {
-    let windDirectionIcon;
+    // Function to get the appropriate Lucide icon based on wind direction
+    const getWindDirectionIcon = (dir) => {
+        // Common props for all arrow icons
+        const arrowProps = {
+            className: styles.WindImages, // Use the same class as other icons
+            size: 24, // Match size with other icons
+            color: "black", // Set color to black
+            strokeWidth: 2 // Adjust stroke width for visibility
+        };
 
-    switch (direction) {
-        case 'N':
-            windDirectionIcon = WindN;
-            break;
-        case 'NE':
-            windDirectionIcon = WindNE;
-            break;
-        case 'E':
-            windDirectionIcon = WindE;
-            break;
-        case 'SE':
-            windDirectionIcon = WindSE;
-            break;
-        case 'S':
-            windDirectionIcon = WindS;
-            break;
-        case 'SW':
-            windDirectionIcon = WindSW;
-            break;
-        case 'W':
-            windDirectionIcon = WindW;
-            break;
-        case 'NW':
-            windDirectionIcon = WindNW;
-            break;
-        default:
-            windDirectionIcon = WindIcon; // Default icon if direction is not recognized
-    }
+        switch (dir) {
+            case 'N':
+                return <ArrowUp {...arrowProps} />;
+            case 'NNE':
+            case 'NE':
+                return <ArrowUpRight {...arrowProps} />;
+            case 'ENE':
+            case 'E':
+                return <ArrowRight {...arrowProps} />;
+            case 'ESE':
+            case 'SE':
+                return <ArrowDownRight {...arrowProps} />;
+            case 'SSE':
+            case 'S':
+                return <ArrowDown {...arrowProps} />;
+            case 'SSW':
+            case 'SW':
+                return <ArrowDownLeft {...arrowProps} />;
+            case 'WSW':
+            case 'W':
+                return <ArrowLeft {...arrowProps} />;
+            case 'WNW':
+            case 'NW':
+            case 'NNW':
+                return <ArrowUpLeft {...arrowProps} />;
+            default:
+                return <ArrowUp {...arrowProps} />; // Default to North
+        }
+    };
+
+    // Get the appropriate direction icon
+    const DirectionIcon = getWindDirectionIcon(direction);
 
     return (
         <div className={styles.WindCard}>
@@ -50,7 +63,7 @@ function WindCard({speed, direction, rainPercent}) {
                 <p>{speed}KT</p>
             </div>
             <div className={styles.WindDirection}>
-                <img src={windDirectionIcon} alt="Wind direction" className={styles.WindImages}/>
+                {DirectionIcon}
                 <p>{direction}</p>
             </div>
             <div className={styles.RainChance}>
@@ -59,8 +72,6 @@ function WindCard({speed, direction, rainPercent}) {
             </div>
         </div>
     );
-
-    
 }
 
 export default WindCard;

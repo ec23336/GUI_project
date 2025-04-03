@@ -100,6 +100,68 @@
     margin: 1rem auto; 
 }
 
+/* Weather Card Center Styles */
+.weather-card-centered {
+  justify-content: center;
+}
+
+.weather-left-centered {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+.divider-centered {
+  margin: 0 1.25rem;
+  align-self: center;
+}
+
+.weather-right-centered {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+/* Updated air temperature styles */
+.airtemp-text-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 0.8rem; /* Increased gap for larger icon */
+}
+
+.airtemp-icon {
+  flex-shrink: 0;
+  margin-left: -0.5rem; /* Changed from 0.5rem to -0.5rem to move icon left */
+}
+
+.airtemp-text {
+  font-size: 1.5rem; /* Increased from 1.2rem */
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  line-height: 1.4;
+}
+
+/* ThermometerSun icon styles */
+.thermometer-sun-icon {
+  flex-shrink: 0;
+  margin-left: -0.5rem;
+  color: #0C7AE0;
+}
+
+/* CircleGauge icon styles */
+.circle-gauge-icon {
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease-in-out;
+  color: #0C7AE0;
+}
+
+.circle-gauge-icon:hover {
+  transform: scale(1.1);
+}
+
 .weather-left img {
     width: 8rem; 
     height: 8rem; 
@@ -413,10 +475,37 @@
     margin-left: 1rem;
 }
 
+/* Location page container and centered elements */
+.location-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh; /* Use 70% of viewport height to ensure vertical centering */
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
+.location-page-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #000000; /* Changed from #0C7AE0 to black */
+}
 
+.location-results-container {
+    width: 100%;
+    margin-top: 3rem;
+}
 
-
+.location-results-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+}
 
 .error-message {
   color: #ff4d4d;
@@ -426,48 +515,35 @@
   padding: 5px;
 }
 
-.alert-bell-wrapper {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
+/* New search box overlay container - updated styling */
+.search-box-overlay {
+    background-color: rgba(70, 70, 70, 0.6); /* Darker, more gray transparent background */
+    border-radius: 2rem;
+    padding: 2.5rem; /* Increased padding for more space around content */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(200, 200, 200, 0.3);
+    width: 100%;
+    max-width: 45rem;
+    display: flex;
+    flex-direction: column; /* Stack title and search bar vertically */
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px); /* Increased blur effect */
+    gap: 1.5rem; /* Add space between title and search bar */
 }
 
-.alert-icon {
-    width: 40px;
-    height: 40px;
+/* Updated title styling to stand out in the darker overlay */
+.search-box-overlay .location-page-title {
+    color: #ffffff; /* White text for better contrast with dark background */
+    margin-bottom: 0; /* Remove margin as gap handles spacing */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Add shadow for better readability */
 }
 
-.alert-dot {
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    background-color: red;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-}
-
-.alert-dropdown {
-    position: absolute;
-    top: 110%;
-    right: 0;
-    background: white;
-    color: black;
-    border-radius: 10px;
-    padding: 1rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-    width: 250px;
-    z-index: 999;
-}
-
-.alert-item {
-    padding-bottom: 0.6rem;
-    margin-bottom: 0.6rem;
-    border-bottom: 1px solid #ccc;
-}
-
-.alert-item:last-child {
-    border-bottom: none;
+/* Ensures the TypeLocationBar remains centered in the overlay */
+.search-box-overlay .typeLocationBar {
+    margin: 0; /* Remove default margin */
+    width: 100%; /* Use full width of container */
+    background-color: rgba(255, 255, 255, 0.8); /* Make search bar more visible */
 }
 
 /* Alert styles */
@@ -587,6 +663,47 @@
     background-position: top;
 }
 
+/* Weather condition classes for Storm component */
+.thunderstormWeather {
+    background: linear-gradient(to bottom, #FF0000, #CC0000, #CC0000, #CC0000, #FF0000); /* Red for thunderstorm */
+}
+
+.foggyWeather {
+    background: linear-gradient(to bottom, #A9A9A9, #808080, #808080, #808080, #A9A9A9); /* Grey for mist/fog */
+}
+
+.rainyWeather {
+    background: linear-gradient(to bottom, #ADD8E6, #87CEEB, #87CEEB, #87CEEB, #ADD8E6); /* Light blue for rain/drizzle */
+}
+
+.snowyWeather {
+    background: linear-gradient(to bottom, #F0F0F0, #E0E0E0, #E0E0E0, #E0E0E0, #F0F0F0); /* Light grey for snow */
+}
+
+.icyWeather {
+    background: linear-gradient(to bottom, #87CEFA, #6CA6CD, #6CA6CD, #6CA6CD, #87CEFA); /* Sky blue for icy conditions */
+}
+
+.showerWeather {
+    background: linear-gradient(to bottom, #6495ED, #4169E1, #4169E1, #4169E1, #6495ED); /* Cornflower blue for rain showers */
+}
+
+.sleetWeather {
+    background: linear-gradient(to bottom, #B0C4DE, #8AA4C8, #8AA4C8, #8AA4C8, #B0C4DE); /* Light steel blue for sleet/snow showers */
+}
+
+.clearWeather {
+    background: linear-gradient(to bottom, #62C3F7, #4A94BC, #4A94BC, #4A94BC, #62C3F7); /* Blue for clear/cloudy conditions */
+}
+
+.normalWeather {
+    background: linear-gradient(to bottom, #62C3F7, #4A94BC, #4A94BC, #4A94BC, #62C3F7); /* Same as clear for normal conditions */
+}
+
+.unknownWeather {
+    background: linear-gradient(to bottom, #FF7C1F, #E67E22, #E67E22, #E67E22, #FF7C1F); /* Orange for unknown conditions */
+}
+
 .Storm:hover {
     transform: scale(1.05);
     background-position: bottom; /* Reverse the gradient */
@@ -595,6 +712,7 @@
 .alertIcon {
     width: 3.3em;
     height: 3.3em;
+    padding-top: 0.9em;
     transition: transform 0.4s ease-in-out;
 }
 
@@ -636,14 +754,27 @@
     background-position: top;
 }
 
+/* Visibility condition classes based on distance */
+.dangerousVisibility {
+    background: linear-gradient(to bottom, #FF0000, #CC0000, #CC0000, #CC0000, #FF0000); /* Red for dangerous visibility (0-1km) */
+}
+
+.moderateVisibility {
+    background: linear-gradient(to bottom, #FFA500, #FF8C00, #FF8C00, #FF8C00, #FFA500); /* Orange for moderate visibility (1-4km) */
+}
+
+.goodVisibility {
+    background: linear-gradient(to bottom, #4CAF50, #388E3C, #388E3C, #388E3C, #4CAF50); /* Green for good visibility (>4km) */
+}
+
 .Visibility:hover {
     transform: scale(1.05);
     background-position: bottom; /* Reverse the gradient */
 }
 
 .bellIcon {
-    width: 3.3em;
-    height: 3.3em;
+    width: 3em; /* Decreased from 3.3em to 3em */
+    height: 3em; /* Decreased from 3.3em to 3em */
     transition: transform 0.4s ease-in-out;
 }
 
@@ -651,13 +782,19 @@
     transform: scale(1.05);
 }
 
-
 .Visibility p {
     font-size: 1.3em;
     text-align: center;
     color: black;
     width : 80%;
     margin-bottom: 0.5em;
+}
+
+.Visibility h3 {
+    margin: 0;
+    font-size: 1.4em; /* Decreased from 1.6em to 1.4em */
+    text-align: center;
+    color: black;
 }
 
 .WindCard {
@@ -729,6 +866,15 @@
     margin-top: 1rem;
 }
 
+.TidesIcon {
+    margin-bottom: 0.5rem; /* Reduced from 1rem to 0.5rem to bring text closer to the icon */
+    transition: transform 0.3s ease-in-out;
+}
+
+.TidesIcon:hover {
+    transform: scale(1.1); /* Add hover effect to match other icons */
+}
+
 .Tides p {
     font-size: 1.6em;
     font-weight: bold;
@@ -739,11 +885,6 @@
     color: #0C7AE0; /* Change text color on hover */
     transform: scale(1.05); /* Slightly enlarge on hover */
     transition: transform 0.3s ease-in-out; /* Smooth transition for the hover effect */
-}
-
-.Tides img {
-    width: 3.2em;
-    height: 3.2em;
 }
 
 .Water {
@@ -850,12 +991,43 @@
     margin-top: 2rem; 
     gap: 2rem;
     margin-bottom: 2rem;
+}
 
+/* Location data display */
+.forecast-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+}
 
+.forecast-item {
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
 
+.forecast-date {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
 
+.forecast-detail {
+    margin-bottom: 0.25rem;
+}
 
+.loading-message, .no-data-message {
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.1rem;
+}
 
-
-
+/* Media query for tablet and desktop */
+@media (min-width: 768px) {
+    .forecast-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }

@@ -1,23 +1,35 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import styles from '../ComponentStyles.module.css';
-import TypeLocationBar from './TypeLocationBar';
 
-function LocationSearchBox() {
-    const [location, setLocation] = useState(""); 
-    
-    const handleLocationSearch = (newLocation) => {
-        if (newLocation.trim() !== "") {
-            setLocation(newLocation);
-            // Location will be handled by TypeLocationBar's navigation
+const LocationSearchBox = ({ onSearch }) => {
+    const [location, setLocation] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (location.trim()) {
+            onSearch(location);
         }
     };
 
     return (
-        <div className={styles['location-search-box']}>
-            <h1>Please Enter Coastal Location For Marine Data</h1>
-            <TypeLocationBar onSearch={handleLocationSearch} type="ocean" />  
+        <div className={styles['search-container']}>
+            <form onSubmit={handleSubmit} className={styles['search-form']}>
+                <input
+                    type="text"
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
+                    placeholder="Enter location (city, country)"
+                    className={styles['search-input']}
+                />
+                <button 
+                    type="submit"
+                    className={styles['search-button']}
+                >
+                    Search
+                </button>
+            </form>
         </div>
     );
-}
+};
 
 export default LocationSearchBox;

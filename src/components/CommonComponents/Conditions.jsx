@@ -1,18 +1,23 @@
 import styles from '../ComponentStyles.module.css';
 import moon from '../../images/Marine-icons/moon.svg';
-import boat from '../../images/Marine-icons/ship.svg';
+import { Tornado } from 'lucide-react'; // Import Tornado icon from Lucide
 
-function FishingConditions({fishTime, currentFlow}) {
+function FishingConditions({moonPhase, currentFlow}) {
     return (
         <div className={styles.fishingConditions}>
             <div className={styles.conditionsLeft}>
                 <img src={moon} alt="moon" className={styles.moonIcon}/>
-                <span>Prime Fishing Time:</span>
-                <span>{fishTime}</span>
+                <span>Moon Phase:</span>
+                <span>{moonPhase}</span>
             </div>
             <div className={styles.conditionsRight}>
-                <img src={boat} alt="boat" className={styles.boatIcon}/>
-                <span>Current Flow:</span>
+                {/* Tornado icon with blue color to match previous ship icon */}
+                <Tornado 
+                    size={24}  
+                    color="blue" 
+                    className={styles.boatIcon} 
+                />
+                <span>Wind Gust:</span>
                 <span>{currentFlow}</span>
             </div>
         </div>
