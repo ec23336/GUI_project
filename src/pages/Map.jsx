@@ -4,12 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import Navbar from "../components/CommonComponents/NavBar";
 import './WindyMap.css'; // Custom Windy styles
 
-export default function Map() {
+// Makes map work
+export default function Map() {  
     const windyContainerRef = useRef(null);
     const scriptRef = useRef(null);
     const [isWindyLoaded, setIsWindyLoaded] = useState(false);
     const windyInitializedRef = useRef(false);
-
+    const Dummy = useRef(null); // Dummy ref to prevent re-renders
     // Handle script loading
     useEffect(() => {
         if (isWindyLoaded || scriptRef.current) {
