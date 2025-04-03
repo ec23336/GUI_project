@@ -1,3 +1,4 @@
+// HourCard Component This component displays formatted hour time information in a card format.
 import React from 'react';
 import styles from '../ComponentStyles.module.css';
 
@@ -23,6 +24,7 @@ function HourCard({ hour }) {
   
   return (
     <div className={styles['hour-card']}>
+        {/* Display the formatted time with AM/PM notation */}
         <span>{timeLabel}</span>
     </div>
   );
