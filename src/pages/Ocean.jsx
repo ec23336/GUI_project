@@ -1,4 +1,4 @@
-// FILE: Ocean.jsx AT ROOT/GUI_project\src\pages\Ocean.jsx
+// Ocean.jsx - Marine weather dashboard page displaying detailed nautical information
 
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -17,26 +17,45 @@ import FishingConditions from '../components/CommonComponents/conditions';
 import MarineDataAPI from '../components/API_CODE/MarineDataAPI';
 
 export default function Ocean() {
+    // Access the current URL and routing information
     const location = useLocation();
-    const [marineLocation, setMarineLocation] = useState('Plymouth'); // Default location
+    // State to track the marine location with default value 'Plymouth'
+    const [marineLocation, setMarineLocation] = useState('Plymouth'); 
 
-    // MarineDataAPI returns an object with marineData, weatherApiData, loading, error
+    // Fetch marine data using the dedicated API hook
     const { marineData, weatherApiData, loading, error } = MarineDataAPI({ marineLocation });
+    
+    // State for marine weather data elements
+    // Default sunrise time state
     const [sunriseTime, setSunriseTime] = useState('6:00 AM');
+    // Default sunset time state
     const [sunsetTime, setSunsetTime] = useState('7:00 PM');
+    // Wind speed in knots/mph
     const [windSpeed, setWindSpeed] = useState('12');
+    // Wind direction (compass direction)
     const [windDirection, setWindDirection] = useState('SW');
+    // Humidity percentage
     const [humidity, setHumidity] = useState('14');
+    // Visibility in kilometers
     const [visibility, setVisibility] = useState(5);
+    // Wave height in meters
     const [waveHeight, setWaveHeight] = useState('2.5');
+    // Sea temperature in celsius
     const [seaTemp, setSeaTemp] = useState('22');
+    // Air temperature in celsius
     const [airTemp, setAirTemp] = useState('23');
+    // Weather description for icon selection
     const [weatherDesc, setWeatherDesc] = useState('rainy');
+    // Moon phase for fishing conditions
     const [moonPhase, setMoonPhase] = useState('');
+    // Atmospheric pressure in millibars
     const [barometricPressure, setBarometricPressure] = useState(1013);
+    // Weather code for storm alerts
     const [weatherCode, setWeatherCode] = useState(1000);
+    // Wind gust speed and direction
     const [windGust, setWindGust] = useState('1.8KT SW');
 
+    // Extract location from URL query parameters if available
     useEffect(() => {
         const queryParams = new URLSearchParams(location.search);
         const locationParam = queryParams.get('location');
@@ -47,7 +66,7 @@ export default function Ocean() {
         }
     }, [location]);
 
-    // Extract data from marineData
+    // Process marine data when it's available
     useEffect(() => {
         if (marineData && marineData.length > 0) {
             const todayData = marineData[0];
@@ -65,7 +84,7 @@ export default function Ocean() {
                 }
             }
             
-            // Set wind speed, direction, and humidity
+            // Extract wind and atmospheric information
             if (todayData.windSpeed) {
                 setWindSpeed(todayData.windSpeed);
                 console.log("Wind speed set:", todayData.windSpeed);
@@ -78,7 +97,8 @@ export default function Ocean() {
                 setHumidity(todayData.humidity);
                 console.log("Humidity set:", todayData.humidity);
             }
-            // Set visibility with better parsing and logging
+            
+            // Process visibility data with validation
             if (todayData.visibility) {
                 // Convert to number and handle edge cases
                 let vis = parseFloat(todayData.visibility);
@@ -98,7 +118,8 @@ export default function Ocean() {
                 console.warn("No visibility data available, using default");
                 setVisibility(5); // Default to good visibility
             }
-            // Set wave height and sea temperature
+            
+            // Extract water conditions data
             if (todayData.waveHeight) {
                 setWaveHeight(todayData.waveHeight);
                 console.log("Wave height set:", todayData.waveHeight);
@@ -107,17 +128,18 @@ export default function Ocean() {
                 setSeaTemp(todayData.seaTemp);
                 console.log("Sea temperature set:", todayData.seaTemp);
             }
-            // Set air temperature
             if (todayData.airTemp) {
                 setAirTemp(todayData.airTemp);
                 console.log("Air temperature set:", todayData.airTemp);
             }
-            // Set weather description for icon
+            
+            // Set weather description for icon selection
             if (todayData.weatherDesc) {
                 setWeatherDesc(todayData.weatherDesc.toLowerCase());
                 console.log("Weather description set:", todayData.weatherDesc);
             }
-            // Set moon phase if available
+            
+            // Extract moon phase data for fishing conditions
             if (todayData.astronomy && todayData.astronomy.moon_phase) {
                 setMoonPhase(todayData.astronomy.moon_phase);
                 console.log("Moon phase set:", todayData.astronomy.moon_phase);
@@ -126,15 +148,13 @@ export default function Ocean() {
                 console.log("Moon phase set:", todayData.astronomy.moonPhase);
             }
 
-            // Extract the new fields
+            // Extract additional meteorological data
             if (todayData.pressureMb) {
                 setBarometricPressure(todayData.pressureMb);
                 console.log("Barometric pressure set from WWO API:", todayData.pressureMb);
             }
             
             if (todayData.weatherCode) {
-                // WWO uses different weather codes than WeatherAPI, would need conversion
-                // For now, set it directly
                 setWeatherCode(parseInt(todayData.weatherCode));
                 console.log("Weather code set from WWO API:", todayData.weatherCode);
             }
@@ -145,18 +165,6 @@ export default function Ocean() {
             }
         }
     }, [marineData]);
-    
-    // Comment out weatherAPI-related useEffect
-    /*
-    useEffect(() => {
-        // Simple debugging to check the structure of weatherApiData
-        console.log("weatherApiData available:", !!weatherApiData);
-        
-        if (weatherApiData) {
-            // ... All weather API data extraction code ...
-        }
-    }, [weatherApiData]);
-    */
 
     // Debug: Log barometric pressure changes
     useEffect(() => {
@@ -169,12 +177,14 @@ export default function Ocean() {
             <Navbar/>
           </header>
           
+          {/* Conditional rendering based on data loading state */}
           {loading ? (
             <div className="text-center p-4">Loading marine data for {marineLocation}...</div>
           ) : error ? (
             <div className="text-center text-red-500 p-4">Error: {error}</div>
           ) : (
             <div className={styles['OceanContainer']}>
+              {/* Top section with three columns of marine information */}
               <div className={styles['OceanTop']}>
                 <div className={styles['OceanTopLeft']}>
                   <SunriseCard time={sunriseTime} />
@@ -182,7 +192,7 @@ export default function Ocean() {
                 </div>
                 <div className={styles['OceanTopMiddle']}>
                   <ExtraInfoCard location={marineLocation} />
-                  {/* Pass isOceanPage prop to display air temp text instead of icon */}
+                  {/* Display air temperature with appropriate styling */}
                   <WeatherCard 
                     customTemperature={airTemp} 
                     customWeatherIcon={weatherDesc} 
@@ -196,8 +206,8 @@ export default function Ocean() {
                   <WaterCard waveHeight={waveHeight} waterTemp={seaTemp} />
                 </div>
               </div>
+              {/* Bottom section with alert cards */}
               <div className={styles['OceanBottom']}>
-                {/* Pass the weatherCode from WorldWeatherOnline API */}
                 <StormCard weatherCode={weatherCode} />
                 <VisibilityCard kilometers={visibility} />
               </div>
