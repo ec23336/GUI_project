@@ -1,20 +1,17 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 const LocationFinder = ({ onLocationFound }) => {
   useEffect(() => {
-    // Get user's location when component mounts
     if (!navigator.geolocation) {
       onLocationFound("Geolocation not supported");
       return;
     }
 
-    // Request location and convert to city name
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         try {
           const { latitude, longitude } = position.coords;
-          const apiKey = "d8c45c7d70324524b08672298ee7fb8e";
-          const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`;
+          const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=d8c45c7d70324524b08672298ee7fb8e`;
           
           const response = await fetch(url);
           const data = await response.json();
@@ -33,7 +30,7 @@ const LocationFinder = ({ onLocationFound }) => {
       },
       () => onLocationFound("Unable to retrieve location")
     );
-  }, []);
+  }, [onLocationFound]);
 
   return null;
 };

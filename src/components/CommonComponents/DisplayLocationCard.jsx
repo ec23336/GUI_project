@@ -8,16 +8,11 @@ function DisplayLocationCard({ locationProp }) {
   const { weatherData, setWeatherData } = useWeather();
 
   useEffect(() => {
-    // If there's location data in the context, prioritize that
     if (weatherData.location && weatherData.location.name) {
       setDisplayLocation(weatherData.location.name);
-    }
-    // Otherwise, if searchLocation is set and manual location is enabled
-    else if (weatherData.searchLocation && weatherData.manualLocationSet) {
+    } else if (weatherData.searchLocation && weatherData.manualLocationSet) {
       setDisplayLocation(weatherData.searchLocation);
-    } 
-    // Fallback to the prop or auto-detected location
-    else if (locationProp !== "Loading..." && !weatherData.manualLocationSet) {
+    } else if (locationProp !== "Loading..." && !weatherData.manualLocationSet) {
       setDisplayLocation(locationProp);
     }
   }, [weatherData.location, weatherData.searchLocation, locationProp, weatherData.manualLocationSet]);
@@ -35,7 +30,6 @@ function DisplayLocationCard({ locationProp }) {
 
   return (
     <div className={styles.locationDisplay}>
-      {/* Add location icon for visual consistency */}
       <span className={styles.locationText}>
         {displayLocation === "Loading..." ? "Finding your location..." : displayLocation}
       </span>

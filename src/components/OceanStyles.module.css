@@ -1,29 +1,30 @@
 .ocean-middle {
     display: flex;
-    justify-content: space-around; /* Distribute space evenly */
-    align-items: flex-start; /* Align items at the top */
+    justify-content: space-around;
+    align-items: flex-start;
     flex-wrap: wrap;
-    gap: 2vw; /* Increased gap for better spacing */
+    gap: 2vw;
     padding: 2vh 2vw;
-    width: 100%; /* Ensure full width */
+    width: 100%;
 }
 
 .ocean-c {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2vh; /* Increased vertical spacing */
-    min-width: 20vw; /* Minimum width */
-    flex: 1; /* Allow flexible growth */
-    max-width: 25vw; /* Maximum width to prevent overexpansion */
+    gap: 1vh;
+    min-width: 20vw;
+    flex: 1;
+    max-width: 25vw;
 }
 
 /* Center the middle weather section */
 .ocean-c:nth-child(2) {
     align-items: center;
-    justify-content: flex-start; /* Align content at the top */
+    justify-content: flex-start;
     text-align: center;
-    min-width: 25vw; /* Slightly bigger than side columns */
+    min-width: 25vw;
+    gap: 1rem;
 }
 
 /* Weather card */
@@ -31,11 +32,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%; /* Take full width of parent */
-    padding: 1.5vh; /* Slightly more padding */
+    width: 100%;
+    padding: 1.5vh;
     background: white;
     border-radius: 20px;
-    box-sizing: border-box; /* Include padding in width calculation */
+    box-sizing: border-box;
 }
 
 /* Bottom alerts (Storm + Visibility) */
@@ -43,31 +44,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 3vw; /* Increased gap */
+    gap: 3vw;
     padding: 2vh;
     width: 100%;
+    flex-wrap: wrap;
 }
 
 /* Alert cards */
 .StormCard, .VisibilityCard {
-    width: 30vw; /* Wider cards for better readability */
+    width: 30vw;
     padding: 1.5vh;
     text-align: center;
     box-sizing: border-box;
 }
 
 /* Sunrise & Sunset Card */
-.SunriseCard, .SunsetCard {
+.SunriseCard, .SunsetCard, .TidesCard, .WaterCard {
     text-align: center;
-    font-size: 1rem;
-    width: 100%; /* Full width of parent */
-    box-sizing: border-box;
-}
-
-/* Tides & Water Info */
-.TidesCard, .WaterCard {
-    text-align: center;
-    width: 100%; /* Full width of parent */
+    width: 100%;
     box-sizing: border-box;
 }
 
@@ -86,39 +80,6 @@
     margin-bottom: 1vh;
     text-align: center;
     box-sizing: border-box;
-}
-
-/* Optional: Tighter vertical spacing */
-.ocean-c {
-    gap: 1vh;
-}
-
-/* Ocean Middle Section */
-.ocean-middle {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start; /* Align to top */
-    flex-wrap: wrap;
-    padding: 1rem;
-    gap: 2rem;
-}
-
-/* Center Column - Weather Card */
-/* Center Column Layout */
-.ocean-c:nth-child(2) {
-    align-items: center;
-    gap: 1rem; /* Tight vertical spacing */
-}
-
-/* Bottom Row Layout */
-.ocean-bottom {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    padding: 1rem;
-    width: 100%;
-    flex-wrap: wrap;
 }
 
 /* Mobile Responsiveness */

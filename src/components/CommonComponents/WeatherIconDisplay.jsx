@@ -12,7 +12,7 @@ import thunderstormIcon from '../../images/weather-icons/thunderstorm.png';
 import drizzleIcon from '../../images/weather-icons/drizzle.png';
 import defaultIcon from '../../images/weather-icons/default.png';
 
-// Import night versions of icons
+// Import night versions
 import nightClearIcon from '../../images/weather-icons/night-clear.png';
 import nightCloudsIcon from '../../images/weather-icons/night-clouds.png';
 import nightRainIcon from '../../images/weather-icons/night-rain.png';
@@ -24,36 +24,20 @@ import nightDefaultIcon from '../../images/weather-icons/night-default.png';
 
 // Map icon names to imported images
 const iconMap = {
-  'clear': clearIcon,
-  'clouds': cloudsIcon,
-  'rain': rainIcon,
-  'snow': snowIcon,
-  'mist': mistIcon,
-  'thunderstorm': thunderstormIcon,
-  'drizzle': drizzleIcon,
-  'default': defaultIcon,
-  'night-clear': nightClearIcon,
-  'night-clouds': nightCloudsIcon,
-  'night-rain': nightRainIcon,
-  'night-snow': nightSnowIcon,
-  'night-mist': nightMistIcon,
-  'night-thunderstorm': nightThunderstormIcon,
-  'night-drizzle': nightDrizzleIcon,
+  'clear': clearIcon, 'clouds': cloudsIcon, 'rain': rainIcon, 'snow': snowIcon,
+  'mist': mistIcon, 'thunderstorm': thunderstormIcon, 'drizzle': drizzleIcon, 
+  'default': defaultIcon, 'night-clear': nightClearIcon, 'night-clouds': nightCloudsIcon,
+  'night-rain': nightRainIcon, 'night-snow': nightSnowIcon, 'night-mist': nightMistIcon,
+  'night-thunderstorm': nightThunderstormIcon, 'night-drizzle': nightDrizzleIcon,
   'night-default': nightDefaultIcon,
 };
 
 function WeatherIconDisplay({ weatherData }) {
-  // Extract needed data
   const conditionCode = weatherData?.weather?.[0]?.id;
   const sunset = weatherData?.sys?.sunset;
   
-  // Determine if it's day or night
   const isDay = isDaytime(sunset);
-  
-  // Get the appropriate icon name based on condition and time of day
   const iconName = getWeatherIconName(conditionCode, isDay);
-  
-  // Get the icon image
   const iconSrc = iconMap[iconName] || iconMap.default;
   
   return (

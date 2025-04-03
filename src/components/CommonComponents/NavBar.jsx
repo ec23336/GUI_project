@@ -1,18 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import styles from '../ComponentStyles.module.css'; // Importing the styles
-import AlertBell from './Alert'; // Import the AlertBell component instead of using the image directly
+import styles from '../ComponentStyles.module.css';
+import AlertBell from './Alert';
 
 const Navbar = () => {
     return (
         <div>
             <nav className={styles.navbar}>
-                {/* Left side logo */}
                 <NavLink to="/" className={styles.logo}>
                     Nautical Weather
                 </NavLink>
         
-                {/* Right side links and alert icon */}
                 <div className={styles["nav-links"]}>
                     <ul>
                         <li>
@@ -32,7 +30,7 @@ const Navbar = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <AlertBell /> {/* Replace the direct image with AlertBell component */}
+                            <AlertBell />
                         </li>
                     </ul>
                 </div>

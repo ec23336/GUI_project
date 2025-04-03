@@ -2,41 +2,34 @@
 .navbar {
     padding: 1rem 3rem;
     display: flex;
-    justify-content: space-between; /* This will position elements on the left and right */
-    align-items: center;           /* This will vertically center the elements */
+    justify-content: space-between;
+    align-items: center;
     height: 6rem;
 }
 
-/* Left side title styling */
-.navbar .logo:hover {
-    transform: scale(1.1);
-    transition: 0.3s;
-}
-
-
-
-/* Left side title styling */
 .navbar .logo {
     color: #C3E3FC;
     font-size: 2.5rem;
     text-decoration: none;
 }
 
-/* Right side links container */
-.navbar .nav-links {
-    display: flex;
-    gap: 40px; /* Increased the space between the links (adjusted for more space) */
-    align-items: center; /* Ensures items are vertically aligned */
+.navbar .logo:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
 }
 
-/* List item style */
+.navbar .nav-links {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
 .navbar li {
     display: inline-block;
     vertical-align: middle;
     margin-left: 3rem;
 }
 
-/* Style for the navbar links */
 .navbar .navlink {
     color: #C3E3FC;
     font-size: 1.8rem;
@@ -45,62 +38,54 @@
     transition: color 0.3s;
 }
 
-/* Hover state for the links */
 .navbar .navlink:hover {
     color: #0C7AE0;
     transform: scale(1.1);
 }
 
 .navbar .active-link {
-    color: #ffffff;              /* White text for contrast */
-    background-color: #0C7AE0;   /* Blue background */
-    border-radius: 5px;          /* Rounded corners */
-    padding: 0.3rem 0.8rem;       /* Add some padding */
-    font-weight: bold;           /* Bold text for emphasis */
-    font-size: 1.8rem;     /* Increased size to match default */
+    color: #ffffff;
+    background-color: #0C7AE0;
+    border-radius: 5px;
+    padding: 0.3rem 0.8rem;
+    font-weight: bold;
+    font-size: 1.8rem;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-
-
-/* Styling for the alert image */
 .navbar img {
     width: 4.5rem;
     height: 4.5rem;
     vertical-align: middle;
-    margin-left: 20px; /* Add space between image and links */
+    margin-left: 20px;
     transition: 0.3s;
 }
 
-/* Hover effect for the image */
 .navbar img:hover {
-    transform: scale(1.15); /* Increase size of the image */
+    transform: scale(1.15);
 }
 
-/* Divider (blue horizontal line under the navbar) */
 .navbar-divider {
     width: 95%;
-    height: 0.2rem; /* Set the height of the line */
-    background-color: #0C7AE0; /* Blue color */
-    margin: 0 auto; /* Center the line */
-   
+    height: 0.2rem;
+    background-color: #0C7AE0;
+    margin: 0 auto;
 }
 
 /* WeatherCard */
 .weather-card {
     display: flex;
     align-items: center;
-    background-color: #ffffff;  /* Improved contrast by changing to white, most noticeable when rain icon is set */
+    background-color: #ffffff;
     border-radius: 10rem;
     padding: 4rem; 
     width: 33.375rem; 
     height: 12rem; 
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2); /* Soft shadow */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
     justify-content: space-between;
     margin: 1rem auto; 
 }
 
-/* Weather Card Center Styles */
 .weather-card-centered {
   justify-content: center;
 }
@@ -122,36 +107,28 @@
   flex: 1;
 }
 
-/* Updated air temperature styles */
 .airtemp-text-container {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  gap: 0.8rem; /* Increased gap for larger icon */
+  gap: 0.8rem;
 }
 
-.airtemp-icon {
+.airtemp-icon, .thermometer-sun-icon {
   flex-shrink: 0;
-  margin-left: -0.5rem; /* Changed from 0.5rem to -0.5rem to move icon left */
+  margin-left: -0.5rem;
+  color: #0C7AE0;
 }
 
 .airtemp-text {
-  font-size: 1.5rem; /* Increased from 1.2rem */
+  font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
   color: #333;
   line-height: 1.4;
 }
 
-/* ThermometerSun icon styles */
-.thermometer-sun-icon {
-  flex-shrink: 0;
-  margin-left: -0.5rem;
-  color: #0C7AE0;
-}
-
-/* CircleGauge icon styles */
 .circle-gauge-icon {
   margin-bottom: 0.5rem;
   transition: transform 0.3s ease-in-out;
@@ -187,22 +164,21 @@
 }
 
 /* DateCard */
-
 .date-card {
-    background-color: #62C3F7; /* Background color */
-    color: white; /* White text */
-    font-family: 'Fredoka', sans-serif; /* ADLaM font */
+    background-color: #62C3F7;
+    color: white;
+    font-family: 'Fredoka', sans-serif;
     font-weight: bold;
-    padding: 0.625rem 1.25rem; /* Padding (adjusted to rem) */
-    border-radius: 2rem; /* Rounded corners */
-    text-align: center; /* Center the text */
-    font-size: 1.25rem; /* Font size */
-    width: 19rem; /* Content-based width */
+    padding: 0.625rem 1.25rem;
+    border-radius: 2rem;
+    text-align: center;
+    font-size: 1.25rem;
+    width: 19rem;
     height: 3.2rem;
-    min-width: 11.25rem; /* Minimum width */
-    margin: 0.5rem auto; /* Centered horizontally */
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2); /* Soft shadow */
-    border: 0.15rem solid black; /* Thin black border */
+    min-width: 11.25rem;
+    margin: 0.5rem auto;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+    border: 0.15rem solid black;
 }
 
 /* TypeLocationBar */
@@ -213,13 +189,12 @@
     border-radius: 2rem;
     padding: 0.5rem 1rem;
     width: 20rem;
-    height: 3rem; /* Fixed height */
+    height: 3rem;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    gap: 0.5rem; /* Add some space between elements */
-    margin: 0.5rem auto; /* Center the bar */
+    gap: 0.5rem;
+    margin: 0.5rem auto;
 }
 
-/* Search Button (Image) */
 .searchButton {
     background: none;
     border: none;
@@ -227,12 +202,12 @@
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    outline: none; /* Remove default focus outline */
-    transition: transform 0.2s ease-in-out; /* Smooth transition for scale effect */
+    outline: none;
+    transition: transform 0.2s ease-in-out;
 }
 
 .searchButton:active {
-    transform: scale(1.15); /* Slightly shrink the button when clicked (visual feedback) */
+    transform: scale(1.15);
 }
 
 .searchButton img {
@@ -242,10 +217,9 @@
 }
 
 .searchButton:hover img {
-    transform: scale(1.1); /* Slight increase on hover */
+    transform: scale(1.1);
 }
 
-/* Input Field */
 .inputField {
     border: none;
     background: transparent;
@@ -254,33 +228,21 @@
     font-weight: bold;
     color: #0C7AE0;
     flex-grow: 1;
-    min-width: 0; /* Ensures input doesn't push out other elements */
+    min-width: 0;
     margin-left: 0.5rem;
 }
 
-/* Placeholder color */
 .inputField::placeholder {
     color: #6c757d;
-}
-
-/* No outline or shadow when the button is focused or clicked */
-.searchButton:focus,
-.searchButton:focus-visible {
-    outline: none;
-}
-
-/* Optional: For keyboard accessibility */
-.searchButton:focus-visible {
-    outline: none;
 }
 
 /* LocationDisplay */
 .locationDisplay {
     justify-content: center;
-    margin: 0.5rem auto; /* Center horizontally */
+    margin: 0.5rem auto;
     display: flex;
     align-items: center;
-    background-color: #C3E3FC; /* Light blue */
+    background-color: #C3E3FC;
     border-radius: 2rem;
     padding: 0.5rem 1rem;
     width: 18rem;
@@ -297,15 +259,18 @@
     max-width: 100%;
 }
 
+/* Forecast cards */
+.degrees-card, .hour-card, .day-card, .icon-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0.2rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
 
-
-/* Degrees Card */
 .degrees-card {
-    display: flex; /* Ensure the use of Flexbox */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    margin: auto;
-    background-color: #ffffff;   /* Improved contrast by changing to white, most noticeable when rain icon is set */
+    background-color: #ffffff;
     font-size: 1.8rem;
     font-weight: bold;
     color: #62C3F7;
@@ -313,34 +278,23 @@
     height: 4rem;
     border-radius: 4rem;
     margin-top: 0.5rem;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .hour-card {
-    display: flex; /* Ensure the use of Flexbox */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    margin: 0 auto; /* Remove margin top/bottom, auto for left/right */
     background-color: #0C7AE0;
-    font-size: 1.1rem; /* Slightly smaller font to fit AM/PM format */
+    font-size: 1.1rem;
     font-weight: bold;
     color: white;
-    width: 6.5rem; /* Slightly wider to fit the AM/PM text */
+    width: 6.5rem;
     height: 2rem;
     border-radius: 1rem;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    padding: 0 0.2rem; /* Add a bit of horizontal padding */
-    overflow: hidden; /* Prevent text overflow */
-    white-space: nowrap; /* Keep text on single line */
-    text-overflow: ellipsis; /* Show ellipsis for text that doesn't fit */
+    padding: 0 0.2rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .day-card {
-    /* Identical styling to hour-card */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto; /* Remove margin top/bottom, auto for left/right */
     background-color: #0C7AE0;
     font-size: 1.3rem;
     font-weight: bold;
@@ -348,29 +302,22 @@
     width: 6rem;
     height: 2rem;
     border-radius: 1rem;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    margin-bottom: 0.3rem; /* Small gap between day and hour */
+    margin-bottom: 0.3rem;
 }
 
 .icon-card {
-    display: flex; /* Ensure the use of Flexbox */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    margin: auto;
-    background-color: #ffffff; /* Improved contrast by changing to white, most noticeable when rain icon is set */
+    background-color: #ffffff;
     font-size: 1.8rem;
     font-weight: bold;
     width: 6rem;
     height: 5rem;
     border-radius: 2rem;
     margin-bottom: 0.5rem;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .icon-card img {
     width: 3.7rem;
     height: 3.7rem;
-
 }
 
 .forecast-card {
@@ -380,56 +327,33 @@
     align-items: center;
     gap: 0.3rem;
     background-color: #62C3F7;
-    width: 6.5rem; /* Restore the original width */
+    width: 6.5rem;
     height: auto;
     border-radius: 1rem;
-    margin: 0; /* Remove margin from cards */
+    margin: 0;
     padding: 0.5rem 0;
     transition: transform 0.2s;
 }
 
 .forecast-card:hover {
-    transform: scale(1.05); /* Slight zoom on hover for better interaction */
+    transform: scale(1.05);
 }
 
 .forecast-list {
     display: flex;
     flex-direction: row;
-    justify-content: space-around; /* Revert to space-around distribution */
+    justify-content: space-around;
     align-items: center;
-    flex-wrap: nowrap; /* Keep items in a single row on larger screens */
-    gap: 0; /* Remove gap between items */
+    flex-wrap: nowrap;
+    gap: 0;
     background-color: #62C3F7;
     width: 90%;
-    max-width: 1200px; /* Restore original max-width */
-    margin: 1rem auto;
-    margin-bottom: 1rem;
+    max-width: 1200px;
+    margin: 1rem auto 1rem;
     border-radius: 2rem;
-    padding: 1rem 0.5rem; /* Reduced horizontal padding */
+    padding: 1rem 0.5rem;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
-
-/* Add minimal responsive fixes for smaller screens */
-@media (max-width: 768px) {
-    .forecast-list {
-        width: 95%;
-        overflow-x: auto; /* Allow horizontal scrolling on small screens */
-    }
-    
-    .forecast-card {
-        min-width: 6rem; /* Prevent cards from shrinking too much */
-    }
-}
-
-/* Adjust individual card elements */
-.degrees-card,
-.hour-card,
-.day-card,
-.icon-card {
-    margin: 0; /* Remove unnecessary margin */
-    padding: 0.2rem; /* Slight padding for compact spacing */
-}
-
 
 /* Location page */
 .location-search-box {
@@ -467,7 +391,6 @@
 .location-search-box .searchButton img {
     width: 3rem;
     height: 3rem;
-    transition: transform 0.2s ease-in-out;
 }
 
 .location-search-box .inputField {
@@ -475,13 +398,12 @@
     margin-left: 1rem;
 }
 
-/* Location page container and centered elements */
 .location-page-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 70vh; /* Use 70% of viewport height to ensure vertical centering */
+    min-height: 70vh;
     padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -492,7 +414,7 @@
     font-weight: bold;
     margin-bottom: 2rem;
     text-align: center;
-    color: #000000; /* Changed from #0C7AE0 to black */
+    color: #000000;
 }
 
 .location-results-container {
@@ -515,35 +437,32 @@
   padding: 5px;
 }
 
-/* New search box overlay container - updated styling */
 .search-box-overlay {
-    background-color: rgba(70, 70, 70, 0.6); /* Darker, more gray transparent background */
+    background-color: rgba(70, 70, 70, 0.6);
     border-radius: 2rem;
-    padding: 2.5rem; /* Increased padding for more space around content */
+    padding: 2.5rem;
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(200, 200, 200, 0.3);
     width: 100%;
     max-width: 45rem;
     display: flex;
-    flex-direction: column; /* Stack title and search bar vertically */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(8px); /* Increased blur effect */
-    gap: 1.5rem; /* Add space between title and search bar */
+    backdrop-filter: blur(8px);
+    gap: 1.5rem;
 }
 
-/* Updated title styling to stand out in the darker overlay */
 .search-box-overlay .location-page-title {
-    color: #ffffff; /* White text for better contrast with dark background */
-    margin-bottom: 0; /* Remove margin as gap handles spacing */
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Add shadow for better readability */
+    color: #ffffff;
+    margin-bottom: 0;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* Ensures the TypeLocationBar remains centered in the overlay */
 .search-box-overlay .typeLocationBar {
-    margin: 0; /* Remove default margin */
-    width: 100%; /* Use full width of container */
-    background-color: rgba(255, 255, 255, 0.8); /* Make search bar more visible */
+    margin: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 /* Alert styles */
@@ -603,10 +522,8 @@
   color: #0C7AE0;
 }
 
-/* Ocean Page */
-
-
-.fishingConditions {
+/* Ocean Page Components */
+.fishingConditions, .WindCard {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -615,6 +532,9 @@
     border-radius: 5em;
     border: 0.15rem solid black;
     box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+}
+
+.fishingConditions {
     width: 25em;
     height: 6em;
     margin-top: 1rem;
@@ -625,13 +545,12 @@
     flex-direction: column;
     align-items: center;
     padding: 0.625em 1.25em;
+    transition: transform 0.3s ease-in-out;
 }
 
 .conditionsLeft:hover, .conditionsRight:hover {
-    transform: scale(1.05); /* Slightly enlarge on hover */
-    transition: transform 0.3s ease-in-out; /* Smooth transition for the hover effect */
+    transform: scale(1.05);
 }
-
 
 .moonIcon, .boatIcon {
     width: 3em;
@@ -644,168 +563,7 @@
     color: #333;
 }
 
-.Storm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(to bottom, #FF0000, #FF7C1F, #FF7C1F, #FF7C1F, #FF0000); /* Three-color gradient */
-    padding: 1.5em;
-    color: white;
-    border-radius: 5em;
-    text-align: center;
-    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
-    width: 20.5em;
-    height: 10em;
-    border: 0.15rem solid black;
-    transition: transform 0.3s ease-in-out, background-position 0.5s ease-in-out;
-    background-size: 100% 300%; /* Three times the height of the container */
-    background-position: top;
-}
-
-/* Weather condition classes for Storm component */
-.thunderstormWeather {
-    background: linear-gradient(to bottom, #FF0000, #CC0000, #CC0000, #CC0000, #FF0000); /* Red for thunderstorm */
-}
-
-.foggyWeather {
-    background: linear-gradient(to bottom, #A9A9A9, #808080, #808080, #808080, #A9A9A9); /* Grey for mist/fog */
-}
-
-.rainyWeather {
-    background: linear-gradient(to bottom, #ADD8E6, #87CEEB, #87CEEB, #87CEEB, #ADD8E6); /* Light blue for rain/drizzle */
-}
-
-.snowyWeather {
-    background: linear-gradient(to bottom, #F0F0F0, #E0E0E0, #E0E0E0, #E0E0E0, #F0F0F0); /* Light grey for snow */
-}
-
-.icyWeather {
-    background: linear-gradient(to bottom, #87CEFA, #6CA6CD, #6CA6CD, #6CA6CD, #87CEFA); /* Sky blue for icy conditions */
-}
-
-.showerWeather {
-    background: linear-gradient(to bottom, #6495ED, #4169E1, #4169E1, #4169E1, #6495ED); /* Cornflower blue for rain showers */
-}
-
-.sleetWeather {
-    background: linear-gradient(to bottom, #B0C4DE, #8AA4C8, #8AA4C8, #8AA4C8, #B0C4DE); /* Light steel blue for sleet/snow showers */
-}
-
-.clearWeather {
-    background: linear-gradient(to bottom, #62C3F7, #4A94BC, #4A94BC, #4A94BC, #62C3F7); /* Blue for clear/cloudy conditions */
-}
-
-.normalWeather {
-    background: linear-gradient(to bottom, #62C3F7, #4A94BC, #4A94BC, #4A94BC, #62C3F7); /* Same as clear for normal conditions */
-}
-
-.unknownWeather {
-    background: linear-gradient(to bottom, #FF7C1F, #E67E22, #E67E22, #E67E22, #FF7C1F); /* Orange for unknown conditions */
-}
-
-.Storm:hover {
-    transform: scale(1.05);
-    background-position: bottom; /* Reverse the gradient */
-}
-
-.alertIcon {
-    width: 3.3em;
-    height: 3.3em;
-    padding-top: 0.9em;
-    transition: transform 0.4s ease-in-out;
-}
-
-.alertIcon:hover {
-    transform: scale(1.05);
-}
-
-.Storm h3 {
-    margin: 0;
-    font-size: 1.6em;
-    text-align: center;
-    color: black;
-}
-
-.Storm p {
-    font-size: 1.15em;
-    text-align: center;
-    color: black;
-    width : 80%;
-    margin-bottom: 0.5em;
-}
-
-.Visibility {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(to bottom, #FF8800, #FF9700, #FFC04D, #FFC04D, #FF9700, #FF8800); 
-    color: white;
-    padding: 1.5em;
-    border-radius: 5em;
-    text-align: center;
-    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
-    width: 20.5em;
-    height: 10em;
-    border: 0.15rem solid black;
-    transition: transform 0.3s ease-in-out, background-position 0.5s ease-in-out;
-    background-size: 100% 300%; /* Three times the height of the container */
-    background-position: top;
-}
-
-/* Visibility condition classes based on distance */
-.dangerousVisibility {
-    background: linear-gradient(to bottom, #FF0000, #CC0000, #CC0000, #CC0000, #FF0000); /* Red for dangerous visibility (0-1km) */
-}
-
-.moderateVisibility {
-    background: linear-gradient(to bottom, #FFA500, #FF8C00, #FF8C00, #FF8C00, #FFA500); /* Orange for moderate visibility (1-4km) */
-}
-
-.goodVisibility {
-    background: linear-gradient(to bottom, #4CAF50, #388E3C, #388E3C, #388E3C, #4CAF50); /* Green for good visibility (>4km) */
-}
-
-.Visibility:hover {
-    transform: scale(1.05);
-    background-position: bottom; /* Reverse the gradient */
-}
-
-.bellIcon {
-    width: 3em; /* Decreased from 3.3em to 3em */
-    height: 3em; /* Decreased from 3.3em to 3em */
-    transition: transform 0.4s ease-in-out;
-}
-
-.bellIcon:hover {
-    transform: scale(1.05);
-}
-
-.Visibility p {
-    font-size: 1.3em;
-    text-align: center;
-    color: black;
-    width : 80%;
-    margin-bottom: 0.5em;
-}
-
-.Visibility h3 {
-    margin: 0;
-    font-size: 1.4em; /* Decreased from 1.6em to 1.4em */
-    text-align: center;
-    color: black;
-}
-
 .WindCard {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #C3E3FC;
-    padding: 0.625em 1.25em;
-    border-radius: 5em;
-    border: 0.15rem solid black;
-    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
     width: 29em;
     height: 6.2em;
     padding-left: 4.5rem;
@@ -834,6 +592,132 @@
     color: #333;
 }
 
+/* Weather conditions classes */
+.Storm, .Visibility {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5em;
+    color: white;
+    border-radius: 5em;
+    text-align: center;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
+    width: 20.5em;
+    height: 10em;
+    border: 0.15rem solid black;
+    transition: transform 0.3s ease-in-out, background-position 0.5s ease-in-out;
+    background-size: 100% 300%;
+    background-position: top;
+}
+
+.Storm {
+    background: linear-gradient(to bottom, #FF0000, #FF7C1F, #FF7C1F, #FF7C1F, #FF0000);
+}
+
+.Visibility {
+    background: linear-gradient(to bottom, #FF8800, #FF9700, #FFC04D, #FFC04D, #FF9700, #FF8800);
+}
+
+.thunderstormWeather {
+    background: linear-gradient(to bottom, #FF0000, #CC0000, #CC0000, #CC0000, #FF0000);
+}
+
+.foggyWeather {
+    background: linear-gradient(to bottom, #A9A9A9, #808080, #808080, #808080, #A9A9A9);
+}
+
+.rainyWeather {
+    background: linear-gradient(to bottom, #ADD8E6, #87CEEB, #87CEEB, #87CEEB, #ADD8E6);
+}
+
+.snowyWeather {
+    background: linear-gradient(to bottom, #F0F0F0, #E0E0E0, #E0E0E0, #E0E0E0, #F0F0F0);
+}
+
+.icyWeather {
+    background: linear-gradient(to bottom, #87CEFA, #6CA6CD, #6CA6CD, #6CA6CD, #87CEFA);
+}
+
+.showerWeather {
+    background: linear-gradient(to bottom, #6495ED, #4169E1, #4169E1, #4169E1, #6495ED);
+}
+
+.sleetWeather {
+    background: linear-gradient(to bottom, #B0C4DE, #8AA4C8, #8AA4C8, #8AA4C8, #B0C4DE);
+}
+
+.clearWeather, .normalWeather {
+    background: linear-gradient(to bottom, #62C3F7, #4A94BC, #4A94BC, #4A94BC, #62C3F7);
+}
+
+.unknownWeather {
+    background: linear-gradient(to bottom, #FF7C1F, #E67E22, #E67E22, #E67E22, #FF7C1F);
+}
+
+.dangerousVisibility {
+    background: linear-gradient(to bottom, #FF0000, #CC0000, #CC0000, #CC0000, #FF0000);
+}
+
+.moderateVisibility {
+    background: linear-gradient(to bottom, #FFA500, #FF8C00, #FF8C00, #FF8C00, #FFA500);
+}
+
+.goodVisibility {
+    background: linear-gradient(to bottom, #4CAF50, #388E3C, #388E3C, #388E3C, #4CAF50);
+}
+
+.Storm:hover, .Visibility:hover {
+    transform: scale(1.05);
+    background-position: bottom;
+}
+
+.alertIcon {
+    width: 3.3em;
+    height: 3.3em;
+    padding-top: 0.9em;
+    transition: transform 0.4s ease-in-out;
+}
+
+.bellIcon {
+    width: 3em;
+    height: 3em;
+    transition: transform 0.4s ease-in-out;
+}
+
+.alertIcon:hover, .bellIcon:hover {
+    transform: scale(1.05);
+}
+
+.Storm h3, .Visibility h3 {
+    margin: 0;
+    text-align: center;
+    color: black;
+}
+
+.Storm h3 {
+    font-size: 1.6em;
+}
+
+.Visibility h3 {
+    font-size: 1.4em;
+}
+
+.Storm p, .Visibility p {
+    text-align: center;
+    color: black;
+    width: 80%;
+    margin-bottom: 0.5em;
+}
+
+.Storm p {
+    font-size: 1.15em;
+}
+
+.Visibility p {
+    font-size: 1.3em;
+}
+
 .Sun {
     display: flex;
     flex-direction: column;
@@ -851,10 +735,9 @@
     color: #FF5900;
 }
 
-.Tides {
+.Tides, .Water {
     display: flex;
     flex-direction: column;
-    align-items: center;
     background-color: #C3E3FC;
     padding: 0.625em 1.25em;
     border-radius: 5em;
@@ -862,17 +745,26 @@
     box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
     width: 20.5em;
     height: 11em;
-    justify-content: center;
     margin-top: 1rem;
 }
 
+.Tides {
+    align-items: center;
+    justify-content: center;
+}
+
+.Water {
+    align-items: start;
+    justify-content: center;
+}
+
 .TidesIcon {
-    margin-bottom: 0.5rem; /* Reduced from 1rem to 0.5rem to bring text closer to the icon */
+    margin-bottom: 0.5rem;
     transition: transform 0.3s ease-in-out;
 }
 
 .TidesIcon:hover {
-    transform: scale(1.1); /* Add hover effect to match other icons */
+    transform: scale(1.1);
 }
 
 .Tides p {
@@ -882,41 +774,26 @@
 }
 
 .Tides p:hover {
-    color: #0C7AE0; /* Change text color on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
-    transition: transform 0.3s ease-in-out; /* Smooth transition for the hover effect */
-}
-
-.Water {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    background-color: #C3E3FC;
-    padding: 0.625em 1.25em;
-    border-radius: 5em;
-    border: 0.15rem solid black;
-    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
-    width: 20.5em;
-    height: 11em;
-    justify-content: center;
-    margin-top: 1rem;
+    color: #0C7AE0;
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
 }
 
 .WaveHeight, .WaterTemp {
     display: flex;
     flex-direction: row;
-    align-items: center; /* Vertically center content */
-    justify-content: flex-start; /* Align the items to the left */
-    gap: 0.5rem; /* Small gap between icon and text */
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    transition: transform 0.3s ease-in-out;
 }
 
 .WaveHeight:hover, .WaterTemp:hover {
-    transform: scale(1.05); /* Slightly enlarge on hover */
-    transition: transform 0.3s ease-in-out; /* Smooth transition for the hover effect */
+    transform: scale(1.05);
 }
 
 .WaveHeight:hover p, .WaterTemp:hover p {
-    color: #0C7AE0; /* Change text color on hover */
+    color: #0C7AE0;
 }
 
 .WaveHeightIcon, .WaterTempIcon {
@@ -928,27 +805,21 @@
 .WaveHeightIcon img, .WaterTempIcon img {
     width: 3.8em;
     height: 3.8em;
-    margin: 0; /* Ensure no margin is applied to the images */
+    margin: 0;
 }
 
-.WaveHeightText, .WaterTempText {
-    display: flex;
-    align-items: center; /* Vertically center the text */
-    justify-content: flex-start;
+.WaterTempIcon img {
+    margin-left: 0.5rem;
 }
 
 .WaveHeight p, .WaterTemp p {
     font-size: 1.2em;
     font-weight: bold;
     color: #333;
-    margin: 0; /* Remove any default margin */
+    margin: 0;
     padding-left: 1rem;
     padding-right: 1rem;
-    line-height: 1; 
-}
-
-.WaterTempIcon img {
-    margin-left: 0.5rem;
+    line-height: 1;
 }
 
 .ExtraInfo {
@@ -965,7 +836,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
 }
 
 .OceanTop {
@@ -980,7 +850,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-right: 2rem; /* Add space between the two sections */
+    margin-right: 2rem;
 }
 
 .OceanBottom {
@@ -988,9 +858,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-top: 2rem; 
+    margin: 2rem 0;
     gap: 2rem;
-    margin-bottom: 2rem;
 }
 
 /* Location data display */
@@ -1025,7 +894,18 @@
     font-size: 1.1rem;
 }
 
-/* Media query for tablet and desktop */
+/* Media queries */
+@media (max-width: 768px) {
+    .forecast-list {
+        width: 95%;
+        overflow-x: auto;
+    }
+    
+    .forecast-card {
+        min-width: 6rem;
+    }
+}
+
 @media (min-width: 768px) {
     .forecast-grid {
         grid-template-columns: repeat(3, 1fr);
