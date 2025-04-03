@@ -1,15 +1,14 @@
+// API.jsx Fetches general weather data from multiple APIs when a location search is triggered.
+
 import { useEffect } from "react";
 import { useWeather } from "../../context/WeatherContext";
 
-/**
- * Component that handles fetching weather data from various APIs
- * and updates the global weather context with the results
- */
 function GrabAPI() {
+    // Access weather context for state management
     const { weatherData, setWeatherData } = useWeather();
     
     useEffect(() => {
-        // Only fetch weather data when a search location is provided
+        // Skip API call if no search location is provided
         if (!weatherData.searchLocation) {
             return;
         }
@@ -19,40 +18,44 @@ function GrabAPI() {
         async function fetchWeatherInfo() {
             try {
                 console.log("Fetching weather for:", weatherData.searchLocation);
-                // Set loading state while fetching data
+                // Set loading state
                 setWeatherData(prevData => ({ ...prevData, loading: true, error: null }));
 
-                // Step 1: Convert location name to coordinates using OpenWeatherMap Geocoding API
+                // Convert location name to coordinates using OpenWeatherMap Geocoding API
                 const geoResponse = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${weatherData.searchLocation}&limit=5&appid=7c852a0f1c711a9f5ba037cc439838a8`);
+            
                 const geoInfo = await geoResponse.json();
                 
+                // Handle case where location isn't found
                 if (!geoInfo.length) {
                     throw new Error("Location not found. Please check spelling and try again.");
                 }
                 
+                // Extract location details
                 const { name, lat, lon } = geoInfo[0];
 
-                // Step 2: Fetch current weather data using the coordinates
+                // Fetch current weather data from OpenWeatherMap API
                 const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=7c852a0f1c711a9f5ba037cc439838a8`);
                 const weatherInfo = await weatherResponse.json();
                 
+                // Process current weather data
                 const { temp } = weatherInfo.main; 
-                const temperatureC = (temp - 273.15).toFixed(1); // Convert Kelvin to Celsius
+                const temperatureC = (temp - 273.15).toFixed(1);  // Convert from Kelvin to Celsius
                 const weatherCondition = weatherInfo.weather[0].description; 
                 const icon = weatherInfo.weather[0].icon;
 
-                // Map API icon code to our application's weather type
+                // Determine weather type for UI display
                 const weatherType = getWeatherType(icon, weatherCondition);
 
-                // Step 3: Fetch 5-day forecast data
+                // Fetch 5-day forecast data
                 const forecastResponse = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=7c852a0f1c711a9f5ba037cc439838a8`);
                 const forecastInfo = await forecastResponse.json();
 
-                // Filter forecasts to get data only for morning, noon, and evening
+                // Filter forecast to specific times of day (6AM, 12PM, 6PM)
                 const validTimes = ["06:00:00","12:00:00", "18:00:00"];
                 const dailyForecasts = forecastInfo.list.filter(entry => validTimes.includes(entry.dt_txt.split(" ")[1]));
 
-                // Map numeric days to day names
+                // Define day names for human-readable display
                 const dayOfTheWeek = {
                     0 : "Sunday",
                     1 : "Monday",
@@ -63,14 +66,14 @@ function GrabAPI() {
                     6 : "Saturday"
                 };
 
-                // Format forecast data for our application
+                // Process and format forecast data for UI display
                 const formattedForecasts = dailyForecasts.map((forecast) => {
                     const date = forecast.dt_txt.split(" ")[0];
                     const time = forecast.dt_txt.split(" ")[1];
                     const day = new Date(date).getDay();
                     const dayName = dayOfTheWeek[day];
                     const temp = forecast.main.temp;
-                    const temperatureC = (temp - 273.15).toFixed(1);
+                    const temperatureC = (temp - 273.15).toFixed(1);  // Convert from Kelvin to Celsius
                     const weatherCondition = forecast.weather[0].description;
                     const icon = forecast.weather[0].icon;
                     const weatherType = getWeatherType(icon, weatherCondition);
@@ -85,22 +88,22 @@ function GrabAPI() {
                     };
                 });
 
-                // Step 4: Fetch additional weather data from Tomorrow.io API
+                // Fetch additional weather metrics from Tomorrow.io API
                 const tomorrowKey = "5AzjYZBIYN50gnL4qrOhiQzcujYX8Ogz";
                 const extraRes = await fetch(`https://api.tomorrow.io/v4/weather/realtime?location=${lat},${lon}&apikey=${tomorrowKey}`);
                 const extraData = await extraRes.json();
                 const extra = extraData.data?.values || {};
 
-                // Create alerts for display in the UI
+                // Format additional weather data as alerts/notifications
                 let alerts = [
-                    { event: "Feels Like", description: `Feels like ${extra.temperatureApparent}°C` },
-                    { event: "UV Index", description: `UV Index is ${extra.uvIndex}` },
-                    { event: "Wind Speed", description: `Wind speed is ${extra.windSpeed} km/h` },
-                    { event: "Rain Chance", description: `Chance of rain is ${extra.precipitationProbability}%` },
-                    { event: "Humidity", description: `Humidity is ${extra.humidity}%` },
+                  { event: "Feels Like", description: `Feels like ${extra.temperatureApparent}°C` },
+                  { event: "UV Index", description: `UV Index is ${extra.uvIndex}` },
+                  { event: "Wind Speed", description: `Wind speed is ${extra.windSpeed} km/h` },
+                  { event: "Rain Chance", description: `Chance of rain is ${extra.precipitationProbability}%` },
+                  { event: "Humidity", description: `Humidity is ${extra.humidity}%` },
                 ];
 
-                // Update global weather context with all collected data
+                // Update global weather context with all processed data
                 setWeatherData({
                     searchLocation: null, // Reset search location after successful fetch
                     location: {
@@ -120,13 +123,13 @@ function GrabAPI() {
                 });
 
             } catch (error){
+                // Handle and log errors
                 console.error("Error fetching weather data:", error);
-                // Update context with error information
                 setWeatherData(prevData => ({ 
                     ...prevData, 
                     loading: false, 
                     error: error.message || "Failed to fetch weather data",
-                    searchLocation: null // Reset search location on error
+                    searchLocation: null // Reset search location on error too
                 }));
             }
         }
@@ -134,14 +137,12 @@ function GrabAPI() {
         fetchWeatherInfo();
     }, [weatherData.searchLocation, setWeatherData]);
 
-    /**
-     * Maps OpenWeatherMap icon codes and descriptions to our application's weather types
-     * @param {string} iconCode - The icon code from OpenWeatherMap API
-     * @param {string} description - The weather description from OpenWeatherMap API
-     * @returns {string} - Weather type used by our application
-     */
+    /*
+     * Helper function to map OpenWeather icon codes to weather type categories
+     * Used for determining which weather icon to display in the UI
+    */
     function getWeatherType(iconCode, description) {
-        // Primary mapping based on icon code
+        // Map icon codes to weather types
         if (iconCode.includes('01')) return 'sunny'; // clear sky
         if (iconCode.includes('02') || iconCode.includes('03')) return 'partlyCloudy'; // few/scattered clouds
         if (iconCode.includes('04')) return 'cloudy'; // broken/overcast clouds
@@ -158,7 +159,7 @@ function GrabAPI() {
         return 'sunny'; // default fallback
     }
 
-    // This component doesn't render anything, it just fetches data
+    // Component doesn't render anything visible
     return null;
 }
 

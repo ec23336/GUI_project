@@ -1,4 +1,4 @@
-// FILE: StormCard.jsx AT ROOT/GUI_project\src\components\CommonComponents\StormCard.jsx
+// StormCard Component This component displays weather alerts based on weather codes in a card format.
 
 import React from 'react';
 import styles from '../ComponentStyles.module.css';
@@ -66,8 +66,13 @@ function StormCard({ weatherCode = 113 }) { // Default to clear/sunny (113)
 
   return (
     <div className={`${styles.Storm} ${weatherConditionClass}`}>
+      {/* Display the alert icon */}
       <img src={alertIcon} alt="alert icon" className={styles.alertIcon} />
+      
+      {/* Display the alert heading */}
       <h3>WEATHER ALERT</h3>
+      
+      {/* Display the appropriate weather message based on condition */}
       <p>{message}</p>
     </div>
   );

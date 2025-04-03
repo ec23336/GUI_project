@@ -1,6 +1,4 @@
 // Map.jsx - Interactive weather map page using Windy API for detailed visualizations
-// This component integrates the Windy.com API to provide an interactive weather map
-// with multiple data layers including wind, rain, temperature, and marine conditions
 
 import "leaflet/dist/leaflet.css"; 
 import L from "leaflet"; 

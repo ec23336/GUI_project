@@ -12,7 +12,7 @@ import lightning from '../../images/WeatherIcons/lightning.png';
 import snowy from '../../images/WeatherIcons/snow.png';
 import partlyCloudy from '../../images/WeatherIcons/partly-cloudy.png';
 
-// Mapping weather types to their respective icons
+// Map of weather types to their corresponding icon images
 const weatherIcons = {
     cloudy,
     rainy,
@@ -24,11 +24,12 @@ const weatherIcons = {
 
 // IconCard component
 function IconCard({ weatherType }) {
-
+    // Get the appropriate weather icon based on the provided type
     const icon = weatherIcons[weatherType];
 
   return (
     <div className={styles['icon-card']}>
+        {/* Display the weather icon matching the current conditions */}
         <img src={icon} alt="weather-icon" />
     </div>
   );

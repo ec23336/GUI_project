@@ -1,10 +1,8 @@
+
+// LocationFinder.jsx Uses browser geolocation API to detect user's current location reverse geocodes coordinates to a human-readable location name.
+
 import { useEffect } from "react";
 
-/**
- * LocationFinder component that retrieves the user's current location
- * and converts the coordinates to a human-readable city and country.
- * Returns null as it doesn't render any UI elements.
- */
 const LocationFinder = ({ onLocationFound }) => {
   useEffect(() => {
     // Check if geolocation is supported by the browser
@@ -13,37 +11,44 @@ const LocationFinder = ({ onLocationFound }) => {
       return;
     }
 
-    // Request the user's current position
+    // Request user's current position
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         try {
-          // Extract latitude and longitude from the position object
+          // Extract latitude and longitude from geolocation response
           const { latitude, longitude } = position.coords;
+          
+          // Use OpenCage Geocoding API to convert coordinates to location name
           const apiKey = "d8c45c7d70324524b08672298ee7fb8e";
           const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`;
           
-          // Fetch location information from OpenCage Geocoding API
           const response = await fetch(url);
           const data = await response.json();
           
-          // Extract city and country from the API response if available
+          // Extract relevant location components from API response
           if (data.results?.[0]?.components) {
             const components = data.results[0].components;
+            
+            // Prioritize city, town, or village name
             const city = components.city || components.town || components.village || "";
             const country = components.country || "";
+            
+            // Return formatted location string
             onLocationFound(`${city}, ${country}`);
           } else {
             onLocationFound("No location found");
           }
         } catch (error) {
+          // Handle API or processing errors
           onLocationFound("Unable to resolve location");
         }
       },
-      // Error callback if geolocation permission is denied or unavailable
+      // Handle geolocation permission denied or timeout errors
       () => onLocationFound("Unable to retrieve location")
     );
-  }, [onLocationFound]); // Re-run effect if onLocationFound callback changes
+  }, [onLocationFound]);
 
+  // Component doesn't render anything visible
   return null;
 };
 

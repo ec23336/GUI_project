@@ -27,6 +27,7 @@ function HourCard({ hour }) {
   
   return (
     <div className={styles['hour-card']}>
+        {/* Display the formatted time with AM/PM notation */}
         <span>{timeLabel}</span>
     </div>
   );
