@@ -4,6 +4,14 @@ import Ocean from "./pages/Ocean.jsx";
 import Map from "./pages/Map.jsx";
 import Location from "./pages/Location.jsx";
 
+/**
+ * AppRouter - Main router component that handles navigation between pages
+ * Sets up routes for the application's different pages:
+ * - Home page (default route)
+ * - Ocean page
+ * - Map page
+ * - Location page
+ */
 const AppRouter = () => {
   return (
     <Router>
