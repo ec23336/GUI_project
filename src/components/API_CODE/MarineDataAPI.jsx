@@ -10,35 +10,51 @@ const MarineDataAPI = ({ marineLocation, updateContext = null }) => {
             try {
                 setLoading(true);
                 if (updateContext) {
-                    updateContext({ location: marineLocation, loading: true, error: null });
+                    updateContext({
+                        location: marineLocation,
+                        loading: true,
+                        error: null
+                    });
                 }
                 
+                // Get coordinates from location name
                 const geoResponse = await fetch(
                     `http://api.openweathermap.org/geo/1.0/direct?q=${marineLocation}&limit=5&appid=7c852a0f1c711a9f5ba037cc439838a8`
                 );
                 
-                if (!geoResponse.ok) throw new Error(`Geocoding API error! Status: ${geoResponse.status}`);
+                if (!geoResponse.ok) {
+                    throw new Error(`Geocoding API error! Status: ${geoResponse.status}`);
+                }
                 
                 const geoInfo = await geoResponse.json();
-                if (!geoInfo || geoInfo.length === 0) throw new Error("Location not found!");
+                
+                if (!geoInfo || geoInfo.length === 0) {
+                    throw new Error("Location not found!");
+                }
                 
                 const { lat, lon } = geoInfo[0];
-                
-                const apiUrl = `http://api.worldweatheronline.com/premium/v1/marine.ashx?key=7f4bda632a6e426ea7b164922251903&format=json&q=${lat},${lon}`;
+                const coordinates = `${lat},${lon}`;
+           
+                // Fetch marine data
+                const apiUrl = `http://api.worldweatheronline.com/premium/v1/marine.ashx?key=7f4bda632a6e426ea7b164922251903&format=json&q=${coordinates}`;
                 const response = await fetch(apiUrl);
                 
-                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
                 
                 const data = await response.json();
-                if (!data?.data?.weather || !Array.isArray(data.data.weather)) {
+
+                if (!data || !data.data || !data.data.weather || !Array.isArray(data.data.weather)) {
                     throw new Error("Invalid data structure from API");
                 }
 
+                // Process the forecast data
                 const middayForecasts = data.data.weather.map((forecast) => {
-                    if (!forecast.hourly?.length || forecast.hourly.length < 5) {
+                    if (!forecast.hourly || !Array.isArray(forecast.hourly) || forecast.hourly.length < 5) {
                         return {
                             date: forecast.date || "Unknown",
-                            astronomy: forecast.astronomy?.[0] || {},
+                            astronomy: (forecast.astronomy && forecast.astronomy[0]) || {},
                             airTemp: "N/A",
                             seaTemp: "N/A",
                             weatherDesc: "Unknown",

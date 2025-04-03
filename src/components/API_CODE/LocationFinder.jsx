@@ -11,7 +11,8 @@ const LocationFinder = ({ onLocationFound }) => {
       async (position) => {
         try {
           const { latitude, longitude } = position.coords;
-          const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=d8c45c7d70324524b08672298ee7fb8e`;
+          const apiKey = "d8c45c7d70324524b08672298ee7fb8e";
+          const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`;
           
           const response = await fetch(url);
           const data = await response.json();
