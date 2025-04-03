@@ -1,8 +1,13 @@
+// This component displays the current date in a specific format: "Tuesday, 25th February".
+
+// Import necessary libraries and components
 import React, { useState, useEffect } from 'react';
 
+// CurrentDate component
 function CurrentDate() {
   const [date, setDate] = useState(new Date());
 
+  // Set up an interval to update the date every second
   useEffect(() => {
     const timer = setInterval(() => {
       setDate(new Date());
@@ -37,4 +42,5 @@ function CurrentDate() {
   );
 }
 
+// Export the CurrentDate component
 export default CurrentDate;

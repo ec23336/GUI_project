@@ -1,7 +1,11 @@
+// This component is responsible for displaying marine data such as wave height and water temperature in a card format.
+
+// Import necessary libraries and components
 import styles from '../ComponentStyles.module.css';
 import WavesIcon from '../../images/Marine-icons/Waves.svg';
 import WaterTempIcon from '../../images/Marine-icons/Temperature.svg';
 
+// WaterCard component
 function WaterCard({waveHeight, waterTemp}) {
     return (
         <div className={styles['Water']}>
@@ -13,7 +17,7 @@ function WaterCard({waveHeight, waterTemp}) {
                     <p>Wave Height: {waveHeight}M</p>
                 </div>
             </div>
-            <div className={styles['WaterTemp']}>
+            <div className={styles['WaterTemp']}> 
                 <div className={styles['WaterTempIcon']}>
                     <img src={WaterTempIcon} alt="water temperature" className={styles['WaterTempImage']}/>
                 </div>
@@ -26,4 +30,5 @@ function WaterCard({waveHeight, waterTemp}) {
     );
 }
 
+// Export the WaterCard component
 export default WaterCard;

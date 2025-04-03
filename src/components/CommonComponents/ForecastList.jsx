@@ -1,8 +1,14 @@
+// This component is responsible for displaying a list of weather forecasts in a horizontal layout. 
+// It uses the ForecastCard component to display individual forecast items. 
+// The component also handles loading and empty states for the forecast data.
+
+// Import necessary libraries and components
 import React from "react";
 import ForecastCard from "./ForecastCard";
 import styles from "../ComponentStyles.module.css"; 
 import { useWeather } from "../../context/WeatherContext";
 
+// ForecastList component
 function ForecastList() {
   const { weatherData } = useWeather();
   const MAX_FORECASTS = 8; // Reduced to 8 forecast items for better horizontal display
@@ -12,9 +18,9 @@ function ForecastList() {
     return (
       <div className={styles["forecast-list"]}>
         {weatherData.loading ? (
-          <p>Loading forecast data...</p>
+          <p>Loading forecast data...</p> // Loading state
         ) : ( 
-          <p>No forecast data available</p>
+          <p>No forecast data available</p> // Empty state
         )}
       </div>
     );
@@ -43,4 +49,5 @@ function ForecastList() {
   );
 }
 
+// Export the ForecastList component
 export default ForecastList;

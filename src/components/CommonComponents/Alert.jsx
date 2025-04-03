@@ -1,9 +1,14 @@
+// This component is responsible for displaying weather alerts in a bell icon.
+
+//Import necessary libraries and components
 import React, { useState, useEffect } from "react";
 import { useWeather } from "../../context/WeatherContext"; 
 import { useLocation } from "react-router-dom";
 import styles from "../ComponentStyles.module.css"; 
 import AlertImg from "../../images/AlertImg.png";
 
+
+// AlertBell component
 function AlertBell() {
   const { weatherData } = useWeather();
   const [isOpen, setIsOpen] = useState(false);
@@ -35,6 +40,7 @@ function AlertBell() {
       {hasAlerts && <span className={styles["alert-dot"]} />}
 
       {isOpen && (
+        // Dropdown menu for alerts
         <div className={styles["alert-dropdown"]}>
           {hasAlerts ? (
             currentAlerts.map((alert, idx) => (
@@ -44,6 +50,7 @@ function AlertBell() {
               </div>
             ))
           ) : (
+            // Message when there are no alerts
             <div className={styles["alert-item"]}>
               <p>No weather alerts at this time.</p>
             </div>
@@ -54,4 +61,5 @@ function AlertBell() {
   );
 }
 
+// Export the AlertBell component
 export default AlertBell;

@@ -1,3 +1,6 @@
+// This component is responsible for displaying wind speed, direction, and rain chance in a card format.
+
+// Import necessary libraries and components
 import styles from '../ComponentStyles.module.css';
 import { 
     ArrowUp, ArrowUpRight, ArrowRight, ArrowDownRight,
@@ -6,6 +9,7 @@ import {
 import WindIcon from '../../images/Marine-icons/Wind.svg';
 import RainCloudIcon from '../../images/Marine-icons/RainCloud.svg';
 
+// WindCard component
 function WindCard({speed, direction, rainPercent}) {
     // Common props for all arrow icons
     const arrowProps = {
@@ -38,6 +42,7 @@ function WindCard({speed, direction, rainPercent}) {
         }
     };
 
+    // Render the WindCard component
     return (
         <div className={styles.WindCard}>
             <div className={styles.WindSpeed}>
@@ -56,5 +61,6 @@ function WindCard({speed, direction, rainPercent}) {
     );
 }
 
+// Export WindCard component
 export default WindCard;
 

@@ -1,6 +1,10 @@
+// This component is used to display the hour in a card format.
+
+// Import necessary libraries and components
 import React from 'react';
 import styles from '../ComponentStyles.module.css';
 
+// HourCard component
 function HourCard({ hour }) {
   // Ensure hour is treated as a number
   const hourNum = typeof hour === 'string' ? parseInt(hour, 10) : hour;
@@ -28,4 +32,5 @@ function HourCard({ hour }) {
   );
 }
 
+// Export the HourCard component
 export default HourCard;

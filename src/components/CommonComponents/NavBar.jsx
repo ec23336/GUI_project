@@ -1,13 +1,18 @@
+// This component is responsible for displaying the navigation bar of the application. 
+// It includes links to different sections of the app and an alert bell icon.
+
+// Import necessary libraries and components
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from '../ComponentStyles.module.css';
 import AlertBell from './Alert';
 
+// Navbar component
 const Navbar = () => {
     return (
         <div>
             <nav className={styles.navbar}>
-                <NavLink to="/" className={styles.logo}>
+                <NavLink to="/" className={styles.logo}> 
                     Nautical Weather
                 </NavLink>
         
@@ -40,4 +45,5 @@ const Navbar = () => {
     );
 };
 
+// Export the Navbar component
 export default Navbar;

@@ -1,3 +1,6 @@
+// This component is responsible for displaying the weather icon based on the weather condition code and time of day.
+
+// Import necessary libraries and components
 import React from 'react';
 import { isDaytime, getWeatherIconName } from '../../utils/weatherIconUtils';
 import styles from '../ComponentStyles.module.css';
@@ -32,6 +35,7 @@ const iconMap = {
   'night-default': nightDefaultIcon,
 };
 
+// WeatherIconDisplay component
 function WeatherIconDisplay({ weatherData }) {
   const conditionCode = weatherData?.weather?.[0]?.id;
   const sunset = weatherData?.sys?.sunset;
@@ -47,4 +51,5 @@ function WeatherIconDisplay({ weatherData }) {
   );
 }
 
+// Export WeatherIconDisplay component
 export default WeatherIconDisplay;

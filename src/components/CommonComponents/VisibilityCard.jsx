@@ -1,7 +1,11 @@
+// This component displays a visibility alert based on the distance in kilometers.
+
+// Import necessary libraries and components
 import React from 'react';
 import styles from '../ComponentStyles.module.css';
 import bellIcon from '../../images/Marine-icons/Bell.svg';
 
+// VisibilityCard component
 function VisibilityCard({ kilometers = 5 }) {
   // More robust parsing with detailed logging
   console.log("VisibilityCard received:", kilometers, "Type:", typeof kilometers);
@@ -53,4 +57,5 @@ function VisibilityCard({ kilometers = 5 }) {
   );
 }
 
+// Export the VisibilityCard component
 export default VisibilityCard;

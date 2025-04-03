@@ -1,3 +1,8 @@
+// This component is responsible for displaying the current weather information in a card format. 
+// It includes the temperature and an icon representing the weather condition. 
+// The component also handles loading and error states.
+
+// Import necessary libraries and components
 import React from 'react';
 import styles from '../ComponentStyles.module.css';
 import { useWeather } from '../../context/WeatherContext';
@@ -11,15 +16,19 @@ import lightning from '../../images/WeatherIcons/lightning.png';
 import snowy from '../../images/WeatherIcons/snow.png';
 import partlyCloudy from '../../images/WeatherIcons/partly-cloudy.png';
 
+// Weather icon mapping
 const weatherIcons = { cloudy, rainy, sunny, lightning, snowy, partlyCloudy };
 
+// WeatherCard component
 function WeatherCard({ customTemperature, customWeatherIcon, isOceanPage = false }) {
   const { weatherData } = useWeather();
   
+  // Check if the weather data is loading or if there's an error
   if (weatherData.loading) {
     return <div className={styles['weather-card']}>Loading weather data...</div>;
   }
 
+  // Check if there's an error in the weather data
   if (weatherData.error) {
     return (
       <div className={styles['weather-card']}>
@@ -28,6 +37,7 @@ function WeatherCard({ customTemperature, customWeatherIcon, isOceanPage = false
     );
   }
   
+  // Get the temperature and weather type from the weather data or use custom values
   const temperature = customTemperature || 
     (weatherData.currentWeather ? weatherData.currentWeather.temperatureC : "25");
   
@@ -36,6 +46,7 @@ function WeatherCard({ customTemperature, customWeatherIcon, isOceanPage = false
   
   const icon = weatherIcons[weatherType] || weatherIcons.sunny;
 
+  // Render the weather card with temperature and icon
   return (
     <div className={`${styles['weather-card']} ${styles['weather-card-centered']}`}>
       <div className={`${styles['weather-left']} ${styles['weather-left-centered']}`}>
@@ -60,5 +71,6 @@ function WeatherCard({ customTemperature, customWeatherIcon, isOceanPage = false
   );
 }
 
+// Export the WeatherCard component
 export default WeatherCard;
 

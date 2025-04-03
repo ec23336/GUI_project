@@ -1,14 +1,19 @@
+//  This component is used to search for a location in the weather app.
+
+// Import necessary libraries and components
 import React, { useState } from "react";
 import styles from "../ComponentStyles.module.css";
 import MagnifyingGlass from "../../images/magnifyingGlass.png";
 import { useWeather } from "../../context/WeatherContext";
 import { useNavigate } from "react-router-dom";
 
+// TypeLocationBar component
 function TypeLocationBar({type}) {
     const [location, setLocation] = useState("");
     const { setWeatherData } = useWeather();
     const navigate = useNavigate();
 
+    // Handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
         if (type === "ocean") {
@@ -43,6 +48,7 @@ function TypeLocationBar({type}) {
     };
 
     return (
+        // Search bar for location input
         <form className={styles.typeLocationBar} onSubmit={handleSubmit}>
             <button type="submit" className={styles.searchButton}>
                 <img src={MagnifyingGlass} alt="Search" />
@@ -59,4 +65,5 @@ function TypeLocationBar({type}) {
     );
 }
 
+// Export the TypeLocationBar component
 export default TypeLocationBar;

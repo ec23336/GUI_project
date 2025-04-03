@@ -1,7 +1,11 @@
+// This component is responsible for displaying weather alerts with a bell icon.
+
+// Import necessary libraries and components
 import styles from '../ComponentStyles.module.css';
 import moon from '../../images/Marine-icons/moon.svg';
 import { Tornado } from 'lucide-react'; // Import Tornado icon from Lucide
 
+// FishingConditions component
 function FishingConditions({moonPhase, currentFlow}) {
     return (
         <div className={styles.fishingConditions}>
@@ -24,4 +28,5 @@ function FishingConditions({moonPhase, currentFlow}) {
     );
 }
 
+// Export the FishingConditions component
 export default FishingConditions;
