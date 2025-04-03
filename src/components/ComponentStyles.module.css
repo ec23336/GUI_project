@@ -1,4 +1,4 @@
-/* Navbar */
+/* Navigation bar styling */
 .navbar {
     padding: 1rem 3rem;
     display: flex;
@@ -7,6 +7,7 @@
     height: 6rem;
 }
 
+/* App logo styling */
 .navbar .logo {
     color: #C3E3FC;
     font-size: 2.5rem;
@@ -72,7 +73,7 @@
     margin: 0 auto;
 }
 
-/* WeatherCard */
+/* Weather card container */
 .weather-card {
     display: flex;
     align-items: center;
@@ -86,6 +87,7 @@
     margin: 1rem auto; 
 }
 
+/* Centered weather card layout */
 .weather-card-centered {
   justify-content: center;
 }
@@ -163,7 +165,7 @@
     color: black;
 }
 
-/* DateCard */
+/* Date display card */
 .date-card {
     background-color: #62C3F7;
     color: white;
@@ -181,7 +183,7 @@
     border: 0.15rem solid black;
 }
 
-/* TypeLocationBar */
+/* Location search bar */
 .typeLocationBar {
     display: flex;
     align-items: center;
@@ -195,6 +197,7 @@
     margin: 0.5rem auto;
 }
 
+/* Search button inside location bar */
 .searchButton {
     background: none;
     border: none;
@@ -236,7 +239,7 @@
     color: #6c757d;
 }
 
-/* LocationDisplay */
+/* Current location display */
 .locationDisplay {
     justify-content: center;
     margin: 0.5rem auto;
@@ -259,7 +262,7 @@
     max-width: 100%;
 }
 
-/* Forecast cards */
+/* Forecast card styling */
 .degrees-card, .hour-card, .day-card, .icon-card {
     display: flex;
     justify-content: center;
@@ -355,7 +358,7 @@
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Location page */
+/* Location search page container */
 .location-search-box {
     display: flex;
     flex-direction: column;
@@ -429,6 +432,7 @@
     text-align: center;
 }
 
+/* Error message display */
 .error-message {
   color: #ff4d4d;
   font-size: 0.9rem;
@@ -437,6 +441,7 @@
   padding: 5px;
 }
 
+/* Overlay for search box */
 .search-box-overlay {
     background-color: rgba(70, 70, 70, 0.6);
     border-radius: 2rem;
@@ -465,7 +470,7 @@
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-/* Alert styles */
+/* Alert notification icon */
 .alert-bell-wrapper {
   position: relative;
   cursor: pointer;
@@ -522,7 +527,7 @@
   color: #0C7AE0;
 }
 
-/* Ocean Page Components */
+/* Ocean fishing conditions card */
 .fishingConditions, .WindCard {
     display: flex;
     justify-content: space-between;
@@ -592,7 +597,7 @@
     color: #333;
 }
 
-/* Weather conditions classes */
+/* Weather condition alert cards */
 .Storm, .Visibility {
     display: flex;
     flex-direction: column;
@@ -611,6 +616,7 @@
     background-position: top;
 }
 
+/* Weather condition gradient backgrounds */
 .Storm {
     background: linear-gradient(to bottom, #FF0000, #FF7C1F, #FF7C1F, #FF7C1F, #FF0000);
 }
@@ -894,7 +900,7 @@
     font-size: 1.1rem;
 }
 
-/* Media queries */
+/* Responsive layout adjustments */
 @media (max-width: 768px) {
     .forecast-list {
         width: 95%;

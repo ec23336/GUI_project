@@ -1,6 +1,6 @@
 /* WindyMap.css - Fixes for Windy API visibility issues */
 
-/* Core Windy UI elements */
+/* Core Windy UI elements - Ensure visibility */
 .windy-map-container .menu-controls,
 .windy-map-container .picker-content,
 .windy-map-container #mobile-ovr-select,
@@ -33,7 +33,7 @@
     pointer-events: auto !important;
 }
 
-/* Dropdown menus need higher z-index */
+/* Dropdown menus - Higher z-index to display correctly */
 .windy-map-container .dropdown-menu,
 .windy-map-container .options,
 .windy-map-container .select-wrapper {
@@ -44,7 +44,7 @@
     z-index: 2000 !important;
 }
 
-/* Mobile-specific fixes */
+/* Mobile-specific fixes for small screens */
 @media (max-width: 768px) {
     .windy-map-container .controls-container,
     .windy-map-container .mobile-controls {
@@ -54,7 +54,7 @@
     }
 }
 
-/* Direct #windy selectors for critical UI elements */
+/* Specific Windy elements requiring higher specificity */
 #windy #map-container .leaflet-top,
 #windy #map-container .leaflet-bottom,
 #windy #bottom,

@@ -1,3 +1,4 @@
+/* Ocean page layout - Middle section with 3-column layout */
 .ocean-middle {
     display: flex;
     justify-content: space-around;
@@ -8,6 +9,7 @@
     width: 100%;
 }
 
+/* Ocean column container */
 .ocean-c {
     display: flex;
     flex-direction: column;
@@ -27,7 +29,7 @@
     gap: 1rem;
 }
 
-/* Weather card */
+/* Weather card container */
 .WeatherCard {
     display: flex;
     align-items: center;
@@ -39,7 +41,7 @@
     box-sizing: border-box;
 }
 
-/* Bottom alerts (Storm + Visibility) */
+/* Bottom section for alert components */
 .ocean-bottom {
     display: flex;
     justify-content: center;
@@ -50,7 +52,7 @@
     flex-wrap: wrap;
 }
 
-/* Alert cards */
+/* Alert card containers */
 .StormCard, .VisibilityCard {
     width: 30vw;
     padding: 1.5vh;
@@ -58,20 +60,21 @@
     box-sizing: border-box;
 }
 
-/* Sunrise & Sunset Card */
+/* Astronomical and water data cards */
 .SunriseCard, .SunsetCard, .TidesCard, .WaterCard {
     text-align: center;
     width: 100%;
     box-sizing: border-box;
 }
 
-/* "Now showing" text */
+/* Location text */
 .ocean-c p {
     margin-bottom: 1vh;
     width: 100%;
     text-align: center;
 }
 
+/* Wind and fishing condition cards */
 .WindCard, .FishingConditions {
     width: 100%;
     padding: 1.5vh;
@@ -82,7 +85,7 @@
     box-sizing: border-box;
 }
 
-/* Mobile Responsiveness */
+/* Mobile responsive adjustments */
 @media (max-width: 768px) {
     .ocean-bottom {
         flex-direction: column;
