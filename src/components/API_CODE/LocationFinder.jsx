@@ -1,9 +1,6 @@
-/*
- * LocationFinder Component
- * 
- * Uses browser geolocation API to detect user's current location
- * and reverse geocodes coordinates to a human-readable location name.
- */
+
+// LocationFinder.jsx Uses browser geolocation API to detect user's current location reverse geocodes coordinates to a human-readable location name.
+
 import { useEffect } from "react";
 
 const LocationFinder = ({ onLocationFound }) => {

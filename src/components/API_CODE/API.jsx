@@ -1,11 +1,5 @@
-/*
- * GrabAPI Component
- * 
- * Fetches general weather data from multiple APIs when a location search is triggered.
- * Uses OpenWeatherMap API for basic weather data and forecast.
- * Uses Tomorrow.io API for additional weather metrics.
- * Updates the global weather context with fetched data.
- */
+// API.jsx Fetches general weather data from multiple APIs when a location search is triggered.
+
 import { useEffect } from "react";
 import { useWeather } from "../../context/WeatherContext";
 
@@ -21,14 +15,6 @@ function GrabAPI() {
         
         console.log("GrabAPI useEffect triggered with location:", weatherData.searchLocation);
         
-        /*
-         * Fetches weather data from multiple sources:
-         * 1. Get coordinates from location name using OpenWeatherMap Geocoding API
-         * 2. Fetch current weather data using OpenWeatherMap API
-         * 3. Fetch forecast data using OpenWeatherMap Forecast API
-         * 4. Fetch additional weather details using Tomorrow.io API
-         * 5. Process and combine all data for UI display
-         */
         async function fetchWeatherInfo() {
             try {
                 console.log("Fetching weather for:", weatherData.searchLocation);

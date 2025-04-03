@@ -1,13 +1,6 @@
-/*
- * MarineDataAPI Component
- * 
- * Fetches marine weather data from World Weather Online API for a specified location.
- * Provides loading, error states, and processed forecast data.
- * 
- * Props:
- * - marineLocation: String representing the location name to fetch data for
- * - updateContext: Optional callback function to update parent context with marine data
- */
+
+// MarineDataAPI.jsx Fetches marine weather data from World Weather Online API for a specified location
+// Provides processed data 
 import { useState, useEffect } from 'react';
 
 const MarineDataAPI = ({ marineLocation, updateContext = null }) => {
@@ -17,14 +10,7 @@ const MarineDataAPI = ({ marineLocation, updateContext = null }) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        /*
-         * Fetches marine data when marineLocation changes
-         * Process:
-         * 1. Convert location name to coordinates using OpenWeatherMap Geocoding API
-         * 2. Fetch marine data using World Weather Online API
-         * 3. Process and format the forecast data
-         * 4. Update local state and parent context if provided
-         */
+
         const fetchMarineData = async () => {
             try {
                 setLoading(true);
