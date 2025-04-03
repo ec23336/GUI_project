@@ -1,0 +1,67 @@
+/* WindyMap.css - Fixes for Windy API visibility issues */
+
+/* Core Windy UI elements */
+.windy-map-container .menu-controls,
+.windy-map-container .picker-content,
+.windy-map-container #mobile-ovr-select,
+.windy-map-container .weather-picker,
+.windy-map-container .menu-ctl-btn,
+.windy-map-container #bottom,
+.windy-map-container #mobile-menu-controls,
+.windy-map-container #embed-zoom,
+.windy-map-container .leaflet-control-zoom,
+.windy-map-container .leaflet-control-zoom-in,
+.windy-map-container .leaflet-control-zoom-out,
+.windy-map-container .leaflet-control,
+.windy-map-container .select-container,
+.windy-map-container .picker-content .select,
+.windy-map-container .plugin-lhpane,
+.windy-map-container .plugin-rhpane,
+.windy-map-container .overlay-switch,
+.windy-map-container .tool-window,
+.windy-map-container #detail,
+.windy-map-container .controls,
+.windy-map-container #timeline,
+.windy-map-container #playpause,
+.windy-map-container #calendar,
+.windy-map-container #search,
+.windy-map-container .search-box {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 1000 !important;
+    pointer-events: auto !important;
+}
+
+/* Dropdown menus need higher z-index */
+.windy-map-container .dropdown-menu,
+.windy-map-container .options,
+.windy-map-container .select-wrapper {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    z-index: 2000 !important;
+}
+
+/* Mobile-specific fixes */
+@media (max-width: 768px) {
+    .windy-map-container .controls-container,
+    .windy-map-container .mobile-controls {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}
+
+/* Direct #windy selectors for critical UI elements */
+#windy #map-container .leaflet-top,
+#windy #map-container .leaflet-bottom,
+#windy #bottom,
+#windy .main-controls {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 1000 !important;
+    pointer-events: auto !important;
+}
